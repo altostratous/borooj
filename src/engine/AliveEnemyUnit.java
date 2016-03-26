@@ -3,7 +3,7 @@ package engine;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public abstract class AliveEnemyUnit implements IContainsTimer, IEnemyUnit {
+public abstract class AliveEnemyUnit extends PhysicalEntity {
     protected int health;
     protected int fullHealth;
     protected int timerInterval;
