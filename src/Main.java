@@ -6,6 +6,13 @@ import engine.World;
  */
 public class Main {
     public static void main(String[] args){
-        World world = new World("data/map.xml", "data/configuration.xml");
+        try {
+            World world = new World("data/map.xml", "data/configuration.xml");
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Problem reading map file, details:");
+            ex.printStackTrace();
+        }
     }
 }
