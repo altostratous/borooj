@@ -1,7 +1,6 @@
 package engine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Castle extends PhysicalEntity {
     public int getLife() {

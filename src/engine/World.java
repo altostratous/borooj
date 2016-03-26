@@ -9,6 +9,15 @@ import java.util.Scanner;
 public class World {
     public Castle castle;
     public Map map;
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
     //public HashMap<Point, Cell> cells;
     private Scanner scanner;
     private int money;
