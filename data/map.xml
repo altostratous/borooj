@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<map width = "100" height = "100">
+    <castle x = "0" y = "0" width = "5" height = "1"></castle>
+    <gate x = "5" y = "0" width = "5" height = "1"></gate>
+    <paths>
+        <path start_x = "4" start_y = "0">dru</path>
+        <path start_x = "3" start_y = "0">ddrrruu</path>
+        <path start_x = "2" start_y = "0">dddrrrrruuu</path>
+        <path start_x = "1" start_y = "0">ddddrrrrrrruuuu</path>
+        <path start_x = "0" start_y = "0">dddddrrrrrrrrruuuuu</path>
+    </paths>
+</map>
