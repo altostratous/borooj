@@ -1,8 +1,5 @@
 package engine;
 
-import engine.MapElements.Cell;
-import engine.Units.AliveEnemyUnit;
-
 import java.util.HashMap;
 
 public class Castle {

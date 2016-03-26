@@ -1,8 +1,5 @@
 package engine;
 
-import engine.MapElements.Cell;
-import engine.MapElements.Path;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;

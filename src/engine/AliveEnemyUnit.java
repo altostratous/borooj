@@ -1,9 +1,4 @@
-package engine.Units;
-
-import engine.Gate;
-import engine.MapElements.Cell;
-import engine.MapElements.Path;
-import engine.World;
+package engine;
 
 import java.util.Timer;
 import java.util.TimerTask;

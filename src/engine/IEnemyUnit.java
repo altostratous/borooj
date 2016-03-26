@@ -1,4 +1,4 @@
-package engine.Units;
+package engine;
 
 public interface IEnemyUnit {
     int getPointOfDestroy();

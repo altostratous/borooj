@@ -1,8 +1,6 @@
 package engine;
 
-//import engine.MapElements.Cell;
-//import engine.MapElements.Point;
-import engine.MapElements.Rectangle;
+import java.awt.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 //import java.util.HashMap;
@@ -26,8 +24,8 @@ public class World {
     private void genCastle() {
         System.out.println("Enter Castle Rectangle (4 numbers with space between for 2 points of rectangle):");
         scanner.nextLine();
-        Rectangle rec = new Rectangle(scanner.nextLine(), this);
-        castle = new Castle(rec.getHashMapOfCells(), 30, this);
+        // Rectangle rec = new Rectangle(scanner.nextLine(), this);
+        //castle = new Castle(rec.getHashMapOfCells(), 30, this);
     }
     public void generateControls() {
         //generate map
