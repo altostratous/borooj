@@ -29,6 +29,10 @@ public class World {
         generateControls();
     }
 
+    public World(String mapFilePath, String configurationFilePath)
+    {
+        this.map = new Map(mapFilePath, this);
+    }
 
     private void genCastle() {
         System.out.println("Enter Castle Rectangle (4 numbers with space between for 2 points of rectangle):");

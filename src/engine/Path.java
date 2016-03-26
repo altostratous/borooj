@@ -1,35 +1,31 @@
 package engine;
 
+import java.awt.*;
 import java.util.ArrayList;
 //import java.util.HashMap;
 
-public class Path {
-    ArrayList<Cell> containingCells;
-
+public class Path extends PhysicalEntity{
     private static int idCounter = 1;
     int myId;
     public boolean isEntranceFree;
 
-    public Path() {
-        containingCells = new ArrayList<>();
+    public Path(World world, ArrayList<Cell> cells) {
+        super(world);
+        setCells(cells);
         myId = idCounter;
         idCounter++;
         isEntranceFree = true;
     }
 
     public void addCell(Cell input) {
-        containingCells.add(input);
-    }
-
-    public ArrayList<Cell> getContainingCells() {
-        return containingCells;
+        getCells().add(input);
     }
 
     public Cell getCell(int n) {
-        return containingCells.get(n - 1);
+        return getCells().get(n - 1);
     }
 
     public Cell getLastCell() {
-        return containingCells.get(containingCells.size() - 1);
+        return getCells().get(getCells().size() - 1);
     }
 }

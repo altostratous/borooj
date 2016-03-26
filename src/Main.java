@@ -6,6 +6,6 @@ import engine.World;
  */
 public class Main {
     public static void main(String[] args){
-        World world = new World();
+        World world = new World("data/map.xml", "data/configuration.xml");
     }
 }
