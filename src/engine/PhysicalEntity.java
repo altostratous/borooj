@@ -1,7 +1,10 @@
 package engine;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class PhysicalEntity {
     private Map map;
@@ -10,12 +13,18 @@ public abstract class PhysicalEntity {
     private int innerTime;
     private int interval;
     private World world;
+    private HashMap<Point, Cell> area;
 
     public PhysicalEntity(World world, int interval)
     {
         setWorld(world);
         setInterval(interval);
         setMap(map);
+    }
+
+    public PhysicalEntity(World world)
+    {
+        setWorld(world);
     }
 
     public World getWorld() {
@@ -58,7 +67,12 @@ public abstract class PhysicalEntity {
     }
 
     public void setCells(ArrayList<Cell> cells) {
+        area = new HashMap<>();
         this.cells = cells;
+        for (Cell cell:cells
+             ) {
+            area.put(cell.getPosition(), cell);
+        }
     }
 
     public Map getMap() {
@@ -67,5 +81,10 @@ public abstract class PhysicalEntity {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public HashMap<Point, Cell> getArea()
+    {
+        return area;
     }
 }

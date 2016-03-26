@@ -1,26 +1,29 @@
 package engine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Castle {
-    HashMap<String, Cell> area;
-    int Life;
-    World world;
-
-    public Castle(HashMap<String, Cell> area, int Life, World world) {
-        this.area = area;
-        this.Life = Life;
-        this.world = world;
+public class Castle extends PhysicalEntity {
+    public int getLife() {
+        return life;
     }
 
-    public HashMap<String, Cell> getArea() {
-        return area;
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    private int life;
+
+    public Castle(ArrayList<Cell> cells, int life, World world) {
+        super(world);
+        setCells(cells);
+        setLife(life);
     }
 
     private void decreaseLife() {
-        Life -= 1;
-        if (Life <= 0) {
-            world.gameOver();
+        setLife(getLife() - 1);
+        if (getLife() <= 0) {
+            getWorld().gameOver();
         }
     }
     public void damage(AliveEnemyUnit attacker) {

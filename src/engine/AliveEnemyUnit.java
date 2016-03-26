@@ -60,13 +60,27 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 
     }
 
-    public void damageMe(int value) {
+    public void damage(int value) {
         if (value >= health) {
             health = 0;
             destroyMe();
         } else {
             health -= value;
         }
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void destroy()
+    {
+        damage(getHealth());
+
     }
 
     public void destroyMe() {
