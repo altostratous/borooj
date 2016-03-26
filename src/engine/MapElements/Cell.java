@@ -1,5 +1,7 @@
 package engine.MapElements;
 
+import java.awt.*;
+
 public class Cell {
     private Point myPosition;
 

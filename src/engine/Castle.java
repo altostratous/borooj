@@ -1,8 +1,6 @@
 package engine;
 
-import com.sun.org.apache.bcel.internal.generic.LineNumberGen;
 import engine.MapElements.Cell;
-import engine.MapElements.Point;
 import engine.Units.AliveEnemyUnit;
 
 import java.util.HashMap;

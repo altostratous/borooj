@@ -2,14 +2,14 @@ package engine;
 
 import engine.MapElements.Cell;
 import engine.MapElements.Path;
-import engine.MapElements.Point;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Map {
     int width, height;
-    public HashMap<String, Cell> myCells;
+    public HashMap<Point, Cell> myCells;
     public ArrayList<Path> myPaths;
 
     public Map(int width, int height) {
@@ -22,9 +22,9 @@ public class Map {
     private void generateCells() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                Point p = new Point(x, y);
+                Point p = new java.awt.Point(x, y);
                 Cell c = new Cell(p);
-                myCells.put(p.toString(), c);
+                myCells.put(p, c);
             }
         }
     }
@@ -33,7 +33,7 @@ public class Map {
         myPaths = input;
     }
 
-    public HashMap<String, Cell> getCells() {
+    public HashMap<Point, Cell> getCells() {
         return myCells;
     }
 
