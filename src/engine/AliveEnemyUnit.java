@@ -1,46 +1,58 @@
 package engine;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public abstract class AliveEnemyUnit extends PhysicalEntity {
     protected int health;
     protected int fullHealth;
-    protected int timerInterval;
-    protected Cell cell;
-    protected Gate enteringGate;
-    protected Path myPath;
+    protected Path path;
     protected int stepCounter;
-    protected World world;
-    protected Timer timer;
 
     public AliveEnemyUnit(int fullHealth, int timerInterval, Gate entringGate, World world) {
-        this.world = world;
+        super(world, timerInterval);
+
         this.fullHealth = fullHealth;
         this.health = fullHealth;
-        this.timerInterval = timerInterval;
-        this.enteringGate = entringGate;
     }
 
-    public void enterTheMap(Path Path) {
+    public void enterTheMap(Path path) {
         this.stepCounter = 1;
-        this.myPath = Path;
-        cell = myPath.getNthCell(stepCounter);
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                move();
-            }
-        }, timerInterval);
+        this.path = path;
+        setCell(path.getCell(stepCounter));
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                move();
+//            }
+//        }, timerInterval);
+    }
+
+    public void timerTick()
+    {
+        move();
+    }
+
+    public Cell getCell()
+    {
+        return getCells().get(0);
+    }
+
+    public void setCell(Cell cell)
+    {
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(cell);
+        setCells(cells);
     }
 
     public void move() {
         stepCounter++;
-        cell = myPath.getNthCell(stepCounter);
-        System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + cell.getPosition().toString());
-        if (cell.equals(myPath.getLastCell())) {
-            if (world.castle.getArea().containsValue(cell)) {
-                world.castle.damage(this);
+        setCell(path.getCell(stepCounter));
+        System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
+        if (getCells().equals(path.getLastCell())) {
+            if (getWorld().castle.getArea().containsValue(getCell())) {
+                getWorld().castle.damage(this);
             } else {
                 throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
             }
@@ -59,11 +71,10 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 
     public void destroyMe() {
         health = 0;
-        timer.cancel();
+        // timer.cancel();
         System.out.println("AliveEnemyUnit is destroyed");
     }
 
-    @Override
     public int getFullHealth() {
         return fullHealth;
     }

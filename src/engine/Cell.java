@@ -3,13 +3,13 @@ package engine;
 import java.awt.*;
 
 public class Cell {
-    private Point myPosition;
+    private Point position;
 
     public Cell(Point position) {
-        myPosition = position;
+        this.position = position;
     }
 
     public Point getPosition() {
-        return myPosition;
+        return position;
     }
 }

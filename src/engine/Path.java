@@ -25,7 +25,7 @@ public class Path {
         return containingCells;
     }
 
-    public Cell getNthCell(int n) {
+    public Cell getCell(int n) {
         return containingCells.get(n - 1);
     }
 
