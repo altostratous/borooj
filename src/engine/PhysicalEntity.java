@@ -13,15 +13,13 @@ public abstract class PhysicalEntity {
     private World world;
     private HashMap<Point, Cell> area;
 
-    public PhysicalEntity(World world, int interval)
-    {
+    public PhysicalEntity(World world, int interval) {
         setWorld(world);
         setInterval(interval);
         setMap(map);
     }
 
-    public PhysicalEntity(World world)
-    {
+    public PhysicalEntity(World world) {
         setWorld(world);
     }
 
@@ -67,8 +65,7 @@ public abstract class PhysicalEntity {
     public void setCells(ArrayList<Cell> cells) {
         area = new HashMap<>();
         this.cells = cells;
-        for (Cell cell:cells
-             ) {
+        for (Cell cell : cells) {
             area.put(cell.getPosition(), cell);
         }
     }
@@ -81,8 +78,7 @@ public abstract class PhysicalEntity {
         this.map = map;
     }
 
-    public HashMap<Point, Cell> getArea()
-    {
+    public HashMap<Point, Cell> getArea() {
         return area;
     }
 }

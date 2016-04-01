@@ -1,13 +1,22 @@
 package engine;
 
 import java.awt.*;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 //import java.util.HashMap;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class World {
     public Castle castle;
+    public Gate gate;
     public Map map;
 
     public Map getMap() {
@@ -31,7 +40,26 @@ public class World {
 
     public World(String mapFilePath, String configurationFilePath) throws Exception
     {
-        this.map = new Map(mapFilePath, this);
+        generateControls(mapFilePath);
+    }
+    private void generateControls(String mapFilePath) throws Exception {
+
+        // do some stuff to get document form the map file
+        File file = new File(mapFilePath);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+                .newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        Document document = documentBuilder.parse(file);
+
+        // get the map element in the file
+        Element mapElement = document.getDocumentElement();
+
+        // get all path nodes
+        NodeList pathsElements = document.getElementsByTagName("path");
+
+
+        this.map = new Map(mapElement, this);
+        this.gate = new Gate(pathsElements, this);
     }
 
 //    private void genCastle() {
