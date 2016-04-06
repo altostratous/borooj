@@ -16,6 +16,7 @@ import java.util.HashMap;
  * Map class providing the map of the game, the cells etc.
  */
 public class Map {
+    // TODO: 4/6/2016 Ali undust this class 
     /**
      * Private variables
      */

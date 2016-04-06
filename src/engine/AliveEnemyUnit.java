@@ -10,6 +10,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     protected Path path;
     protected int stepCounter;
 
+    // TODO: 4/6/2016 Mohammad complete the documentation on this file 
     public AliveEnemyUnit(int fullHealth, int timerInterval, Gate entringGate, World world) {
         super(world, timerInterval);
 

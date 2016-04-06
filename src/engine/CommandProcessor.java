@@ -3,6 +3,7 @@ package engine;
 import java.util.Scanner;
 
 public class CommandProcessor {
+    // TODO: 4/6/2016 Ali implement this class 
     private String currentCommand;
     private Scanner scanner;
     //private boolean pleaseStop;

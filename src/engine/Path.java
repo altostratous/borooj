@@ -5,6 +5,7 @@ import java.util.ArrayList;
 //import java.util.HashMap;
 
 public class Path extends PhysicalEntity{
+    // TODO: 4/6/2016 Mohammad complete Documentation on this file 
     private static int idCounter = 1;
     int myId;
     public boolean isEntranceFree;
