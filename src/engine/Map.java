@@ -66,6 +66,14 @@ public class Map {
         return cells;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
 //    /**
 //     * Set the paths manually
 //     * @param paths
