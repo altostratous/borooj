@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
 /**
+ * Path is used for determining which cells should be passes by soldiers
  */
 public class Path extends PhysicalEntity{
     private static int idCounter = 1;
