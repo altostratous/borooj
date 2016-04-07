@@ -2,6 +2,7 @@ package engine;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -12,16 +13,13 @@ public class CommandProcessor {
     private Scanner scanner;
     private boolean pleaseCancel;
 
-    public CommandProcessor(PrintStream out, World world, Scanner scanner) {
+    public CommandProcessor(PrintStream out, World world, InputStream inputStream) {
         this.out = out;
         this.world = world;
-        this.scanner = scanner;
+        this.scanner = new Scanner(inputStream);
     }
 
-    //private boolean pleaseStop;
-    public CommandProcessor() {
-        Scanner scanner = new Scanner(System.in);
-    }
+    //private boolean pleaseStop
 
     public void start() {
         while (!pleaseCancel) {
