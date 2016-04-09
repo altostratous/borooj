@@ -32,8 +32,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 //        }, timerInterval);
     }
 
-    public void timerTick()
-    {
+    public void Tick() {
         move();
     }
 
@@ -53,6 +52,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
         stepCounter++;
         setCell(path.getCell(stepCounter));
         System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
+        //Bug Here getCells is an ArrayList
         if (getCells().equals(path.getLastCell())) {
             if (getWorld().castle.getArea().containsValue(getCell())) {
                 getWorld().castle.damage(this);
