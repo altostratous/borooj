@@ -11,10 +11,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Timer;
+import java.util.*;
 
 public class World {
     public Castle getCastle() {
@@ -37,10 +34,14 @@ public class World {
     private Gate gate;
     private Map map;
     private Timer timer;
-    private ArrayList<PhysicalEntity> physicalEntities;
+    private HashSet<PhysicalEntity> physicalEntities;
 
-    public ArrayList<PhysicalEntity> getPhysicalEntities() {
-        return physicalEntities;
+    public void addPhysicalEntity(PhysicalEntity pe) {
+        physicalEntities.add(pe);
+    }
+
+    public void removePhysicalEntity(PhysicalEntity pe) {
+        physicalEntities.remove(pe);
     }
 
     public Map getMap() {
@@ -83,9 +84,11 @@ public class World {
 
 
         // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
-        physicalEntities = new ArrayList<>();
+        physicalEntities = new HashSet<>();
         this.map = new Map(mapElement, this);
         this.gate = new Gate(pathsElements, this);
+        this.gate.setInterval(1000);
+        this.physicalEntities.add(this.gate);
         this.timer = new Timer();
     }
 
@@ -134,7 +137,7 @@ public class World {
     public ValidationState start() {
         for (PhysicalEntity pe :
                 physicalEntities) {
-            timer.schedule(pe.getTimerTask(), pe.getInterval());
+            timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
         }
         return ValidationState.VALID;
     }

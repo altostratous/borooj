@@ -108,6 +108,6 @@ public class Gate extends PhysicalEntity{
 
     @Override
     public void timerTick() {
-        throw new NotImplementedException();
+        System.out.println("The gate is beating!");
     }
 }
