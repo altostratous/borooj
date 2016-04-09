@@ -106,6 +106,7 @@ public class CommandProcessor {
             }
         }
 
+        // TODO: 4/9/2016 Add other types of chars to the output
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
                 out.print(table[j][i]);
@@ -116,8 +117,7 @@ public class CommandProcessor {
     }
 
     private void newGame() {
-        String configPath = scanner.nextLine();
-        ValidationState validationState = world.newGame(configPath);
+        ValidationState validationState = world.newGame();
         if (validationState.equals(ValidationState.VALID)) {
             out.println("New game started successfully!");
         } else {
