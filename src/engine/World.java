@@ -87,4 +87,20 @@ public class World {
         System.out.println("gameOver!");
         throw new NotImplementedException();
     }
+
+    public ValidationState addTower(Point base) {
+        throw new NotImplementedException();
+    }
+
+    public ValidationState setConfig(String configPath) {
+        throw new NotImplementedException();
+    }
+
+    public ValidationState setMap(String configPath) {
+        throw new NotImplementedException();
+    }
+
+    public ValidationState newGame(String configPath) {
+        throw new NotImplementedException();
+    }
 }
