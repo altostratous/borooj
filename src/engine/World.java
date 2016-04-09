@@ -11,13 +11,37 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class World {
-    public Castle castle;
-    public Gate gate;
-    public Map map;
+    public Castle getCastle() {
+        return castle;
+    }
+
+    public void setCastle(Castle castle) {
+        this.castle = castle;
+    }
+
+    public Gate getGate() {
+        return gate;
+    }
+
+    public void setGate(Gate gate) {
+        this.gate = gate;
+    }
+
+    private Castle castle;
+    private Gate gate;
+    private Map map;
+    private Timer timer;
+    private ArrayList<PhysicalEntity> physicalEntities;
+
+    public ArrayList<PhysicalEntity> getPhysicalEntities() {
+        return physicalEntities;
+    }
 
     public Map getMap() {
         return map;
@@ -58,8 +82,15 @@ public class World {
         NodeList pathsElements = document.getElementsByTagName("path");
 
 
+        // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
+        physicalEntities = new ArrayList<>();
         this.map = new Map(mapElement, this);
         this.gate = new Gate(pathsElements, this);
+        this.timer = new Timer();
+        for (PhysicalEntity pe :
+                physicalEntities) {
+            timer.schedule(pe.getTimerTask(), pe.getInterval());
+        }
     }
 
 //    private void genCastle() {
