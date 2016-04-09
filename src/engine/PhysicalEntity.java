@@ -3,6 +3,7 @@ package engine;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TimerTask;
 
 public abstract class PhysicalEntity {
     private Map map;
@@ -23,6 +24,7 @@ public abstract class PhysicalEntity {
         setWorld(world);
     }
 
+    public abstract void timerTick();
     public World getWorld() {
         return world;
     }
@@ -80,5 +82,14 @@ public abstract class PhysicalEntity {
 
     public HashMap<Point, Cell> getArea() {
         return area;
+    }
+
+    public TimerTask getTimerTask() {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                timerTick();
+            }
+        };
     }
 }
