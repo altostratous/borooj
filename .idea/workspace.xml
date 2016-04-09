@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9b3031e-6abc-443d-bb6e-04b6eba8b70f" name="Default" comment="Implementation of Soldiers Entering Map and added Wave Class">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/Wave.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design/borooj.vpp~1" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/borooj.vpp" afterPath="$PROJECT_DIR$/design/borooj.vpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/Main.class" afterPath="$PROJECT_DIR$/out/production/borooj/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/engine/AliveEnemyUnit.class" afterPath="$PROJECT_DIR$/out/production/borooj/engine/AliveEnemyUnit.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/engine/CommandProcessor.class" afterPath="$PROJECT_DIR$/out/production/borooj/engine/CommandProcessor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/engine/Map.class" afterPath="$PROJECT_DIR$/out/production/borooj/engine/Map.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/engine/Path.class" afterPath="$PROJECT_DIR$/out/production/borooj/engine/Path.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/AliveEnemyUnit.java" afterPath="$PROJECT_DIR$/src/engine/AliveEnemyUnit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Gate.java" afterPath="$PROJECT_DIR$/src/engine/Gate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Soldier.java" afterPath="$PROJECT_DIR$/src/engine/Soldier.java" />
     </list>
     <ignored path="borooj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,11 +68,11 @@
         <entry file="file://$PROJECT_DIR$/src/engine/Gate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+              <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
+                <element signature="e#877#878#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -699,7 +693,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460003424049</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implementation of Soldiers Entering Map and added Wave Class">
+      <created>1460215304894</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1460215304910</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -870,8 +870,8 @@
           <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,8 +953,8 @@
           <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1026,8 +1026,8 @@
           <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1255,11 +1255,11 @@
     <entry file="file://$PROJECT_DIR$/src/engine/Gate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
           </folding>
         </state>
       </provider>
