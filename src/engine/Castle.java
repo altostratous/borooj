@@ -1,5 +1,7 @@
 package engine;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.ArrayList;
 
 public class Castle extends PhysicalEntity {
@@ -28,5 +30,10 @@ public class Castle extends PhysicalEntity {
     public void damage(AliveEnemyUnit attacker) {
         decreaseLife();
         attacker.destroyMe();
+    }
+
+    @Override
+    public void timerTick() {
+        throw new NotImplementedException();
     }
 }

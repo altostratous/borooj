@@ -60,7 +60,7 @@ public class CommandProcessor {
     private void startGame() {
         ValidationState validationState = world.start();
         if (validationState.equals(ValidationState.VALID)) {
-            out.println("Tower added successfully!");
+            out.println("Game started successfully!");
         } else {
             out.println(validationState);
         }

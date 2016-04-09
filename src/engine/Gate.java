@@ -2,6 +2,7 @@ package engine;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class Gate extends PhysicalEntity{
             // temporary list for path cells
             ArrayList<Cell> pathCells = new ArrayList<>();
             // add the starting cell
-            pathCells.add(getWorld().map.getCells().get(start));
+            pathCells.add(getWorld().getMap().getCells().get(start));
 
             // for each direction
             for (int j = 0; j < directions.length(); j++) {
@@ -96,12 +97,17 @@ public class Gate extends PhysicalEntity{
                         break;
                 }
                 // add current cell to cells
-                pathCells.add(getWorld().map.getCells().get(new Point(x, y)));
+                pathCells.add(getWorld().getMap().getCells().get(new Point(x, y)));
             }
             // create path from cells
             Path path = new Path(getWorld(), pathCells);
             // add the path to the paths
             paths.add(path);
         }
+    }
+
+    @Override
+    public void timerTick() {
+        throw new NotImplementedException();
     }
 }

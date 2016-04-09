@@ -87,10 +87,6 @@ public class World {
         this.map = new Map(mapElement, this);
         this.gate = new Gate(pathsElements, this);
         this.timer = new Timer();
-        for (PhysicalEntity pe :
-                physicalEntities) {
-            timer.schedule(pe.getTimerTask(), pe.getInterval());
-        }
     }
 
 //    private void genCastle() {
@@ -136,6 +132,10 @@ public class World {
     }
 
     public ValidationState start() {
-        throw new NotImplementedException();
+        for (PhysicalEntity pe :
+                physicalEntities) {
+            timer.schedule(pe.getTimerTask(), pe.getInterval());
+        }
+        return ValidationState.VALID;
     }
 }

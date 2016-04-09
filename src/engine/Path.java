@@ -1,5 +1,7 @@
 package engine;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -30,5 +32,10 @@ public class Path extends PhysicalEntity{
 
     public Cell getLastCell() {
         return getCells().get(getCells().size() - 1);
+    }
+
+    @Override
+    public void timerTick() {
+        throw new NotImplementedException();
     }
 }
