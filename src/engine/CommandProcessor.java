@@ -2,6 +2,7 @@ package engine;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -54,15 +55,33 @@ public class CommandProcessor {
     }
 
     private void tower() {
-        throw new NotImplementedException();
+        Point base = new Point(scanner.nextInt(), scanner.nextInt());
+        ValidationState validationState = world.addTower(base);
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("Tower added successfully!");
+        } else {
+            out.println(validationState);
+        }
     }
 
     private void setMap() {
-        throw new NotImplementedException();
+        String configPath = scanner.nextLine();
+        ValidationState validationState = world.setMap(configPath);
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("Map set successfully!");
+        } else {
+            out.println(validationState);
+        }
     }
 
     private void setConfig() {
-        throw new NotImplementedException();
+        String configPath = scanner.nextLine();
+        ValidationState validationState = world.setConfig(configPath);
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("Config set successfully!");
+        } else {
+            out.println(validationState);
+        }
     }
 
     private void display() {
@@ -85,7 +104,13 @@ public class CommandProcessor {
     }
 
     private void newGame() {
-        throw new NotImplementedException();
+        String configPath = scanner.nextLine();
+        ValidationState validationState = world.newGame(configPath);
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("New game started successfully!");
+        } else {
+            out.println(validationState);
+        }
     }
 
 }
