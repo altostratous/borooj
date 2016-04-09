@@ -49,9 +49,21 @@ public class CommandProcessor {
             if (command.equals("tower")) {
                 tower();
             }
+            if (command.equals("start-game")) {
+                startGame();
+            }
 
         }
 
+    }
+
+    private void startGame() {
+        ValidationState validationState = world.start();
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("Tower added successfully!");
+        } else {
+            out.println(validationState);
+        }
     }
 
     private void tower() {

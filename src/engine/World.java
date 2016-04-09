@@ -103,4 +103,8 @@ public class World {
     public ValidationState newGame(String configPath) {
         throw new NotImplementedException();
     }
+
+    public ValidationState start() {
+        throw new NotImplementedException();
+    }
 }
