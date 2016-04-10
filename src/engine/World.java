@@ -4,6 +4,7 @@ import java.awt.*;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -38,6 +39,8 @@ public class World {
     private Map map;
     private Timer timer;
     private ArrayList<PhysicalEntity> physicalEntities;
+    private ArrayList<Wave> waves;
+    private int wavesCounter;
 
     public ArrayList<PhysicalEntity> getPhysicalEntities() {
         return physicalEntities;
@@ -66,6 +69,11 @@ public class World {
     {
         generateControls(mapFilePath);
     }
+
+    public void callWave() {
+        wavesCounter++;
+        waves.get(wavesCounter).startWaving();
+    }
     private void generateControls(String mapFilePath) throws Exception {
 
         // do some stuff to get document form the map file
@@ -78,9 +86,13 @@ public class World {
         // get the map element in the file
         Element mapElement = document.getDocumentElement();
 
+
         // get all path nodes
         NodeList pathsElements = document.getElementsByTagName("path");
 
+        //get all waves
+        NodeList wavesNodeList = document.getElementsByTagName("wave");
+        generateWaves(wavesNodeList);
 
         // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
         physicalEntities = new ArrayList<>();
@@ -90,6 +102,15 @@ public class World {
         for (PhysicalEntity pe :
                 physicalEntities) {
             timer.schedule(pe.getTimerTask(), pe.getInterval());
+        }
+    }
+
+    private void generateWaves(NodeList wavesNodeList) {
+        wavesCounter = -1;
+        waves = new ArrayList<>();
+        for (int i = 0; i < wavesNodeList.getLength(); i++) {
+            Node node = wavesNodeList.item(i);
+            waves.add(new Wave(getGate(), node));
         }
     }
 
@@ -136,6 +157,7 @@ public class World {
     }
 
     public ValidationState start() {
+        callWave();
         throw new NotImplementedException();
     }
 }

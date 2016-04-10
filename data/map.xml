@@ -10,4 +10,9 @@
         <path start_x = "1" start_y = "0">ddddrrrrrrruuuu</path>
         <path start_x = "0" start_y = "0">dddddrrrrrrrrruuuuu</path>
     </paths>
+    <Waves>
+        <wave>
+            <units type="Soldier" count="10"/>
+        </wave>
+    </Waves>
 </map>

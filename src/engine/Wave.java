@@ -1,5 +1,7 @@
 package engine;
 
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
 
 /**
@@ -10,14 +12,26 @@ public class Wave {
     private ArrayList<AliveEnemyUnit> units;
     private String XMLunits;
 
-    public Wave(Gate gate, String XMLunits) {
+    public Wave(Gate gate, Node XMLnode) {
         this.gate = gate;
-        this.XMLunits = XMLunits;
+        generateEnemies(XMLnode);
     }
 
-    private void generateEnemies() {
+
+    private void generateEnemies(Node XMLnode) {
         units = new ArrayList<>();
         //TODO: Generate Enemy Objects, According to the XML
+
+        //get units
+        //foreach unit in units construct alive enemy unit according to count and type of unit
+        //add them to units ArrayList
+    }
+
+    /**
+     * This method starts the wave for the player and add generated enemy Objects to the gate
+     */
+    public void startWaving() {
+        addEnemiesToGate();
     }
 
     public void addEnemiesToGate() {
@@ -29,5 +43,9 @@ public class Wave {
         for (Path p : gate.getPaths()) {
             gate.pathEntranceGotFree(p);
         }
+    }
+
+    public void waveEnded() {
+        gate.getWorld().callWave();
     }
 }
