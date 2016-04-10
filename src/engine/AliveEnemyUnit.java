@@ -54,8 +54,8 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
         System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
         //Bug Here getCells is an ArrayList
         if (getCells().equals(path.getLastCell())) {
-            if (getWorld().castle.getArea().containsValue(getCell())) {
-                getWorld().castle.damage(this);
+            if (getWorld().getCastle().getArea().containsValue(getCell())) {
+                getWorld().getCastle().damage(this);
             } else {
                 throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
             }

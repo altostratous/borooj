@@ -2,6 +2,7 @@ package engine;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -103,5 +104,10 @@ public class Gate extends PhysicalEntity{
             // add the path to the paths
             paths.add(path);
         }
+    }
+
+    @Override
+    public void timerTick() {
+        System.out.println("The gate is beating!");
     }
 }
