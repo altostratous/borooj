@@ -4,6 +4,7 @@ import java.awt.*;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -62,6 +63,9 @@ public class World {
     private ArrayList<Wave> waves;
     private int wavesCounter;
 
+    public ArrayList<PhysicalEntity> getPhysicalEntities() {
+        return physicalEntities;
+    }
     /**
      * Registers a physical entity in the world so that the entity starts acting
      * @param pe the physical entity to add
@@ -140,7 +144,8 @@ public class World {
         NodeList wavesNodeList = document.getElementsByTagName("wave");
         generateWaves(wavesNodeList);
 
-        physicalEntities = new HashSet<>();
+        // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
+        physicalEntities = new ArrayList<>();
         this.map = new Map(mapElement, this);
         this.gate = new Gate(pathsElements, this);
         // simple interval to test the functionality
@@ -148,12 +153,18 @@ public class World {
         // register the gate as a physical entity
         this.physicalEntities.add(this.gate);
         this.timer = new Timer();
+        for (PhysicalEntity pe :
+                physicalEntities) {
+            timer.schedule(pe.getTimerTask(), pe.getInterval());
+        }
     }
 
     /**
      * This function is called when the game is over
      */
     public void onGameOver() {
+        throw new NotImplementedException();
+    }
     private void generateWaves(NodeList wavesNodeList) {
         wavesCounter = -1;
         waves = new ArrayList<>();
