@@ -242,7 +242,7 @@ public class World {
      */
     public ValidationState start() {
         callWave();
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
         for (PhysicalEntity pe :
                 physicalEntities) {
             timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
