@@ -2,28 +2,32 @@ package engine;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Gate extends PhysicalEntity{
+    // paths to insert enemies in
     private ArrayList<Path> paths;
+
+    /**
+     * Get the paths of the Gate
+     *
+     * @return returns an ArrayList<Path>
+     */
     public ArrayList<Path> getPaths() {
         return paths;
     }
 
+    // a queue to put incoming enemies in
     private ArrayList<AliveEnemyUnit> enemyQueue;
-//    public void setPaths(ArrayList<Path> paths) {
-//        getWorld().getMap().setPaths(paths);
-//    }
 
-//    public Gate(World world, ArrayList<Path> paths)
-//    {
-//        super(world);
-//        setPaths(paths);
-//    }
-
+    /**
+     * Constructs the gate
+     * @param pathNode the node from the xml file
+     * @param world the world to put the gate in
+     * @throws Exception if the xml has problem some exception will occur
+     */
     public Gate(NodeList pathNode, World world) throws Exception {
         super(world);
         //SET GATE CELLS
@@ -53,6 +57,11 @@ public class Gate extends PhysicalEntity{
         enemyQueue.remove(0);
         enemy.enterTheMap(path);
     }
+
+    /**
+     * Generate paths based on an xml node
+     * @param pathsElements The node list of paths in the xml file
+     */
     private void generatePaths(NodeList pathsElements) {
         // init paths
         paths = new ArrayList<>();
@@ -106,8 +115,19 @@ public class Gate extends PhysicalEntity{
         }
     }
 
+    /**
+     * Here the gate puts the enemies in paths
+     */
     @Override
     public void timerTick() {
-        System.out.println("The gate is beating!");
+        for (AliveEnemyUnit enemyUnit : enemyQueue) {
+            for (Path path :
+                    paths) {
+                if (path.isEntranceFree()) {
+                    enemyUnit.enterTheMap(path);
+                    break;
+                }
+            }
+        }
     }
 }

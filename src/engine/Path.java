@@ -11,8 +11,8 @@ import java.util.ArrayList;
  */
 public class Path extends PhysicalEntity{
     private static int idCounter = 1;
-    int myId;
-    public boolean isEntranceFree;
+    private int myId;
+    private boolean isEntranceFree;
 
     public Path(World world, ArrayList<Cell> cells) {
         super(world);
@@ -37,5 +37,9 @@ public class Path extends PhysicalEntity{
     @Override
     public void timerTick() {
         throw new NotImplementedException();
+    }
+
+    public boolean isEntranceFree() {
+        return isEntranceFree;
     }
 }
