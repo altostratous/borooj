@@ -1,10 +1,16 @@
 package engine;
 
+import sun.plugin.dom.exception.InvalidStateException;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/***
+ * This class models alive enemy units
+ */
 public abstract class AliveEnemyUnit extends PhysicalEntity {
+    // local vars
     protected int health;
     protected int fullHealth;
     protected Path path;
@@ -20,6 +26,11 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
         this.health = fullHealth;
     }
 
+    /**
+     * Puts this in a map
+     *
+     * @param path the path to put this in
+     */
     public void enterTheMap(Path path) {
         this.stepCounter = 1;
         this.path = path;
@@ -32,66 +43,72 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 //        }, timerInterval);
     }
 
-    public void Tick() {
-        move();
-    }
-
-    public Cell getCell()
-    {
+    /**
+     * If the enemy unit is remained in a single cell gets that
+     * @return RETURN A cell
+     */
+    public Cell getCell() {
+        if (getCells().size() != 1)
+            throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
         return getCells().get(0);
     }
 
-    public void setCell(Cell cell)
-    {
+
+    /**
+     * If the enemy unit is remained in a single cell sets it
+     * @param cell the sell
+     */
+    public void setCell(Cell cell) {
+        if (getCells().size() != 1)
+            throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         setCells(cells);
     }
 
-    public void move() {
-        stepCounter++;
-        setCell(path.getCell(stepCounter));
-        System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
-        //Bug Here getCells is an ArrayList
-        if (getCells().equals(path.getLastCell())) {
-            if (getWorld().getCastle().getArea().containsValue(getCell())) {
-                getWorld().getCastle().damage(this);
-            } else {
-                throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
-            }
-        }
 
-    }
-
+    /**
+     * Decrease the health of the alive enemy unit
+     * @param value the amount of damage to apply on the alive enemy unit
+     */
     public void damage(int value) {
         if (value >= health) {
             health = 0;
-            destroyMe();
+            destroy();
         } else {
             health -= value;
         }
     }
 
+    /**
+     * Get the health
+     * @return returns the health
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Sets the health of the enemy unit
+     * @param health
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     * Damages the alive enemy unit completely
+     */
     public void destroy()
     {
         damage(getHealth());
 
     }
 
-    public void destroyMe() {
-        health = 0;
-        // timer.cancel();
-        System.out.println("AliveEnemyUnit is destroyed");
-    }
-
+    /**
+     * Get the full health
+     * @return returns an int
+     */
     public int getFullHealth() {
         return fullHealth;
     }
