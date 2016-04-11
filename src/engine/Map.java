@@ -1,15 +1,7 @@
 package engine;
 
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -66,29 +58,21 @@ public class Map {
         return cells;
     }
 
+    /**
+     * Gests the height of the map
+     *
+     * @return an integer
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Gets the width of the map
+     * @return an int
+     */
     public int getWidth() {
         return width;
     }
 
-//    /**
-//     * Set the paths manually
-//     * @param paths
-//     */
-//    public void setPaths(ArrayList<Path> paths) {
-//        this.paths = paths;
-//    }
-
-//    /**
-//     * Get paths.
-//     * @return returns an array list containing the paths.
-//     */
-//    public ArrayList<Path> getPaths() {
-//        if (paths == null)
-//            throw new IllegalStateException("me: myPaths is not set yet");
-//        return paths;
-//    }
 }
