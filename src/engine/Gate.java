@@ -28,10 +28,23 @@ public class Gate extends PhysicalEntity{
      * @param world the world to put the gate in
      * @throws Exception if the xml has problem some exception will occur
      */
-    public Gate(NodeList pathNode, World world) throws Exception {
+    public Gate(NodeList pathNodes, World world) throws Exception {
         super(world);
-        //SET GATE CELLS
-        generatePaths(pathNode);
+        // SET GATE CELLS
+        // for each path element in the map file
+        ArrayList<Cell> cells = new ArrayList<>();
+        for (int i = 0; i < pathNodes.getLength(); i++) {
+            // current pathnode
+            Node pathNode = pathNodes.item(i);
+
+            // set starting point of the path
+            int x = Integer.parseInt(pathNode.getAttributes().getNamedItem("start_x").getTextContent());
+            int y = Integer.parseInt(pathNode.getAttributes().getNamedItem("start_y").getTextContent());
+
+            cells.add(world.getMap().getCells().get(new Point(x, y)));
+        }
+        setCells(cells);
+        generatePaths(pathNodes);
         enemyQueue = new ArrayList<>();
     }
 

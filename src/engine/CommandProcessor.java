@@ -96,17 +96,31 @@ public class CommandProcessor {
         }
     }
 
+    /**
+     * To display the map
+     */
     private void display() {
         Map map = world.getMap();
         char[][] table = new char[map.getHeight()][map.getWidth()];
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
                 table[j][i] = '#';
-
             }
         }
 
-        // TODO: 4/9/2016 Add other types of chars to the output
+        for (Cell cell :
+                world.getGate().getCells()) {
+            int x = (int) cell.getPosition().getX();
+            int y = (int) cell.getPosition().getY();
+            table[y][x] = '@';
+        }
+
+        world.getPhysicalEntities().stream().filter(pe -> pe instanceof AliveEnemyUnit).forEach(pe -> {
+            int x = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getX();
+            int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
+            table[y][x] = '1';
+        });
+
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
                 out.print(table[j][i]);
