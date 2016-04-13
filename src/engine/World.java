@@ -115,6 +115,7 @@ public class World {
     }
 
     public void callWave() {
+        // TODO: 4/13/2016 Check limit of waves 
         wavesCounter++;
         waves.get(wavesCounter).startWaving();
     }
@@ -140,18 +141,21 @@ public class World {
         // get all path nodes
         NodeList pathsElements = document.getElementsByTagName("path");
 
-        //get all waves
-        NodeList wavesNodeList = document.getElementsByTagName("wave");
-        generateWaves(wavesNodeList);
 
         // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
         physicalEntities = new ArrayList<>();
         this.map = new Map(mapElement, this);
+        // init gate
         this.gate = new Gate(pathsElements, this);
         // simple interval to test the functionality
         this.gate.setInterval(1000);
         // register the gate as a physical entity
         this.physicalEntities.add(this.gate);
+
+        //get all waves
+        NodeList wavesNodeList = document.getElementsByTagName("wave");
+        generateWaves(wavesNodeList);
+
         this.timer = new Timer();
         for (PhysicalEntity pe :
                 physicalEntities) {
@@ -170,7 +174,7 @@ public class World {
         waves = new ArrayList<>();
         for (int i = 0; i < wavesNodeList.getLength(); i++) {
             Node node = wavesNodeList.item(i);
-            waves.add(new Wave(getGate(), node));
+            waves.add(new Wave(getGate(), node, this));
         }
     }
 

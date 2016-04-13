@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<map width = "100" height = "100">
+<map width="11" height="11">
     <castle x = "0" y = "0" width = "5" height = "1"></castle>
     <gate x = "5" y = "0" width = "5" height = "1"></gate>
     <!-- Directions are in u, r, d, l format. u for up, r for right etc. -->
@@ -10,9 +10,9 @@
         <path start_x = "1" start_y = "0">ddddrrrrrrruuuu</path>
         <path start_x = "0" start_y = "0">dddddrrrrrrrrruuuuu</path>
     </paths>
-    <Waves>
+    <waves>
         <wave>
-            <units type="Soldier" count="10"/>
+            <units type="Soldier" count="15"/>
         </wave>
-    </Waves>
+    </waves>
 </map>

@@ -36,6 +36,7 @@ public class Cell {
      */
     public Cell(Point position) {
         this.position = position;
+        this.entities = new ArrayList<>();
     }
 
     /**

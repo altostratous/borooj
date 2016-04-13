@@ -59,8 +59,8 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
      * @param cell the sell
      */
     public void setCell(Cell cell) {
-        if (getCells().size() != 1)
-            throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
+//        if (getCells().size() != 1)
+//            throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         setCells(cells);
