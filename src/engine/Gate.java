@@ -55,21 +55,21 @@ public class Gate extends PhysicalEntity{
         enemyQueue.add(enemy);
     }
 
-    /**
-     * This method is called when an enemy unit lefts first cell and enters second
-     * In this method another enemy that is in queue for entering the map, will start to move and enter first cell of map
-     * <p>
-     * Attention: When first enemy unit of each path is waiting to enter the map there is no enemy before, so this method is not called by an Enemy in this condition
-     * it is called by Wave after adding enemies to the gate
-     */
-    public void pathEntranceGotFree(Path path) {
-        if (!paths.contains(path))
-            throw new IllegalArgumentException("me: This path doesn't exist in gate pathList");
-
-        AliveEnemyUnit enemy = enemyQueue.get(0);
-        enemyQueue.remove(0);
-        enemy.enterTheMap(path);
-    }
+//    /**
+//     * This method is called when an enemy unit lefts first cell and enters second
+//     * In this method another enemy that is in queue for entering the map, will start to move and enter first cell of map
+//     * <p>
+//     * Attention: When first enemy unit of each path is waiting to enter the map there is no enemy before, so this method is not called by an Enemy in this condition
+//     * it is called by Wave after adding enemies to the gate
+//     */
+//    public void pathEntranceGotFree(Path path) {
+//        if (!paths.contains(path))
+//            throw new IllegalArgumentException("me: This path doesn't exist in gate pathList");
+//
+//        AliveEnemyUnit enemy = enemyQueue.get(0);
+//        enemyQueue.remove(0);
+//        enemy.enterTheMap(path);
+//    }
 
     /**
      * Generate paths based on an xml node
@@ -128,15 +128,15 @@ public class Gate extends PhysicalEntity{
         }
     }
 
-    /**
-     * It is necessary for using gate, this method call first round enemy entrance
-     */
-    public void start() {
-        for (AliveEnemyUnit unit :
-                enemyQueue) {
-            getWorld().getTimer().schedule(unit.getTimerTask(), 0, unit.getInterval());
-        }
-    }
+//    /**
+//     * It is necessary for using gate, this method call first round enemy entrance
+//     */
+//    public void start() {
+//        for (AliveEnemyUnit unit :
+//                enemyQueue) {
+//            getWorld().getTimer().schedule(unit.getTimerTask(), 0, unit.getInterval());
+//        }
+//    }
 
     /**
      * Here the gate puts the enemies in paths

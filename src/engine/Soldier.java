@@ -15,10 +15,10 @@ public class Soldier extends AliveEnemyUnit {
     public void move() {
         stepCounter++;
         setCell(path.getCell(stepCounter));
-        System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
+        //System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
         //Bug Here getCells is an ArrayList
-        if (getCells().equals(path.getLastCell())) {
-            if (getWorld().getCastle().getArea().containsValue(getCell())) {
+        if (getCell().equals(path.getLastCell())) {
+            if (getWorld().getCastle().getArea().containsKey(getCell().getPosition())) {
                 getWorld().getCastle().damage(this);
             } else {
                 throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
@@ -33,7 +33,9 @@ public class Soldier extends AliveEnemyUnit {
      */
     @Override
     public void timerTick() {
-        move();
+        // TODO: 4/15/2016 Resolve the overhead
+        if (getHealth() > 0)
+            move();
     }
 
 }

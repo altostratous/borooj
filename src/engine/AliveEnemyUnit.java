@@ -35,6 +35,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
         this.stepCounter = 1;
         this.path = path;
         setCell(path.getCell(stepCounter));
+        getWorld().addPhysicalEntity(this);
 //        timer.schedule(new TimerTask() {
 //            @Override
 //            public void run() {
@@ -61,8 +62,11 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     public void setCell(Cell cell) {
 //        if (getCells().size() != 1)
 //            throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
+        if (getCells() != null)
+            getCell().getEntities().remove(this);
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
+        cell.getEntities().add(this);
         setCells(cells);
     }
 
@@ -74,7 +78,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     public void damage(int value) {
         if (value >= health) {
             health = 0;
-            destroy();
+            getWorld().getPhysicalEntities().remove(this);
         } else {
             health -= value;
         }

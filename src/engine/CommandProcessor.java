@@ -99,7 +99,7 @@ public class CommandProcessor {
     /**
      * To display the map
      */
-    private void display() {
+    public void display() {
         Map map = world.getMap();
         char[][] table = new char[map.getHeight()][map.getWidth()];
         for (int j = 0; j < map.getHeight(); j++) {
@@ -127,11 +127,15 @@ public class CommandProcessor {
         }
 
         // Printing Units
-        world.getPhysicalEntities().stream().filter(pe -> pe instanceof AliveEnemyUnit).forEach(pe -> {
-            int x = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getX();
-            int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
-            table[y][x] = '1';
-        });
+        for (PhysicalEntity pe : world.getPhysicalEntities()
+                ) {
+            if (pe instanceof AliveEnemyUnit) {
+
+                int x = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getX();
+                int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
+                table[y][x] = '1';
+            }
+        }
 
 
         int test = 1;

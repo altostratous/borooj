@@ -81,6 +81,7 @@ public class World {
      */
     public void addPhysicalEntity(PhysicalEntity pe) {
         physicalEntities.add(pe);
+        timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
     }
 
     /**
@@ -266,7 +267,7 @@ public class World {
                 physicalEntities) {
             timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
         }
-        gate.start();
+        //gate.start();
         return ValidationState.VALID;
     }
 }
