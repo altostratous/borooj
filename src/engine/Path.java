@@ -13,8 +13,11 @@ public class Path extends PhysicalEntity{
     // local vars
     private static int idCounter = 1;
     private int myId;
-    public Path(World world, ArrayList<Cell> cells) {
+    private String direction;
+
+    public Path(World world, ArrayList<Cell> cells, String direction) {
         super(world);
+        this.direction = direction;
         setCells(cells);
         myId = idCounter;
         idCounter++;
@@ -51,12 +54,12 @@ public class Path extends PhysicalEntity{
      */
     @Override
     public void timerTick() {
-        return;
+
     }
 
     /**
      * Checks if the entrance is free
-     * @return
+     * @return a boolean
      */
     public boolean isEntranceFree() {
         return getCells().get(0).getEntities().size() == 0;

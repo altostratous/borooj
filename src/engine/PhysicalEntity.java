@@ -39,7 +39,7 @@ public abstract class PhysicalEntity {
 
     /**
      * Creates the physical entity only from the containing  world
-     * @param world
+     *
      */
     public PhysicalEntity(World world) {
         setWorld(world);
@@ -121,7 +121,6 @@ public abstract class PhysicalEntity {
      * @return ArrayList<Cell>
      */
     public ArrayList<Cell> getCells() {
-
         return cells;
     }
 
@@ -155,7 +154,7 @@ public abstract class PhysicalEntity {
 
     /**
      * Gets a map of point to Cell from the cells of the entity
-     * @return
+     *
      */
     public HashMap<Point, Cell> getArea() {
         return area;

@@ -24,7 +24,7 @@ public class Gate extends PhysicalEntity{
 
     /**
      * Constructs the gate
-     * @param pathNode the node from the xml file
+     * @param pathNodes the node from the xml file
      * @param world the world to put the gate in
      * @throws Exception if the xml has problem some exception will occur
      */
@@ -122,9 +122,19 @@ public class Gate extends PhysicalEntity{
                 pathCells.add(getWorld().getMap().getCells().get(new Point(x, y)));
             }
             // create path from cells
-            Path path = new Path(getWorld(), pathCells);
+            Path path = new Path(getWorld(), pathCells, directions);
             // add the path to the paths
             paths.add(path);
+        }
+    }
+
+    /**
+     * It is necessary for using gate, this method call first round enemy entrance
+     */
+    public void start() {
+        for (AliveEnemyUnit unit :
+                enemyQueue) {
+            getWorld().getTimer().schedule(unit.getTimerTask(), 0, unit.getInterval());
         }
     }
 

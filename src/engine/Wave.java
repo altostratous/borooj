@@ -1,6 +1,7 @@
 package engine;
 
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,24 @@ public class Wave {
 
     private void generateEnemies(Node node) {
         units = new ArrayList<>();
-        Node XMLNode = node.getChildNodes().item(1);
+        String str = "";
+        //node.getChildNodes().
+        NodeList children = node.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            str += children.item(i).toString();
+
+            //str += n.toString();
+        }//node.getChildNodes()
+        //n = n+ 10;
+        Node XMLNode = node.getChildNodes().item(0);
+
+        for (int i = 0; i < node.getChildNodes().getLength(); i++) {
+            if (node.getChildNodes().item(i).getNodeType() == Node.ELEMENT_NODE)
+                XMLNode = node.getChildNodes().item(i);
+        }
+        if (XMLNode.getNodeType() != Node.ELEMENT_NODE)
+            throw new IllegalArgumentException("me: There isn't any unit in this wave");
+
         //get units
         String enemyType = XMLNode.getAttributes().getNamedItem("type").getTextContent();
         // TODO: 4/13/2016 Validate the input

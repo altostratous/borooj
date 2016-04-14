@@ -107,20 +107,44 @@ public class CommandProcessor {
                 table[j][i] = '#';
             }
         }
+        // Printing paths
+        for (Path path :
+                world.getGate().getPaths()) {
+            for (Cell cell :
+                    path.getCells()) {
+                int x = (int) cell.getPosition().getX();
+                int y = (int) cell.getPosition().getY();
+                table[y][x] = 'P';
+            }
+        }
 
+        // Printing Gate
         for (Cell cell :
                 world.getGate().getCells()) {
             int x = (int) cell.getPosition().getX();
             int y = (int) cell.getPosition().getY();
-            table[y][x] = '@';
+            table[y][x] = 'G';
         }
 
+        // Printing Units
         world.getPhysicalEntities().stream().filter(pe -> pe instanceof AliveEnemyUnit).forEach(pe -> {
             int x = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getX();
             int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
             table[y][x] = '1';
         });
 
+
+        int test = 1;
+        // Printing castle
+        for (Cell cell :
+                world.getCastle().getCells()) {
+            int x = (int) cell.getPosition().getX();
+            int y = (int) cell.getPosition().getY();
+            table[y][x] = 'C';
+        }
+
+
+        // Printing map
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
                 out.print(table[j][i]);

@@ -19,6 +19,15 @@ import java.util.*;
  */
 public class World {
     /**
+     * Get Timer
+     *
+     * @return gets the timer of world
+     */
+    public Timer getTimer() {
+        return timer;
+    }
+
+    /**
      * Get the castle
      *
      * @return gets the castle in the world
@@ -84,7 +93,7 @@ public class World {
 
     /**
      * Gets the map of the world
-     * @return
+     *
      */
     public Map getMap() {
         return map;
@@ -141,6 +150,8 @@ public class World {
         // get all path nodes
         NodeList pathsElements = document.getElementsByTagName("path");
 
+        // Getting castle Element from XML
+        Node castleElement = document.getElementsByTagName("castle").item(0);
 
         // TODO: 4/9/2016 Add physicalEntities to physicalEntities in these constructors.
         physicalEntities = new ArrayList<>();
@@ -151,6 +162,10 @@ public class World {
         this.gate.setInterval(1000);
         // register the gate as a physical entity
         this.physicalEntities.add(this.gate);
+
+        //
+        this.castle = new Castle(castleElement, this);
+        this.physicalEntities.add(this.castle);
 
         //get all waves
         NodeList wavesNodeList = document.getElementsByTagName("wave");
@@ -251,6 +266,7 @@ public class World {
                 physicalEntities) {
             timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
         }
+        gate.start();
         return ValidationState.VALID;
     }
 }
