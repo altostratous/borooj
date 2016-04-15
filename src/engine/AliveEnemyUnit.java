@@ -14,7 +14,16 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     protected int health;
     protected int fullHealth;
     protected Path path;
-    protected int stepCounter;
+
+    public int getStepCounter() {
+        return stepCounter;
+    }
+
+    public void setStepCounter(int stepCounter) {
+        this.stepCounter = stepCounter;
+    }
+
+    private int stepCounter;
 
     /**
      * Constructs Alive Enemy Unit by given properties

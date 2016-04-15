@@ -143,11 +143,13 @@ public class Gate extends PhysicalEntity{
      */
     @Override
     public void timerTick() {
-        for (AliveEnemyUnit enemyUnit : enemyQueue) {
+        for (int i = enemyQueue.size() - 1; i >= 0; i--) {
+            AliveEnemyUnit enemyUnit = enemyQueue.get(i);
             for (Path path :
                     paths) {
                 if (path.isEntranceFree()) {
                     enemyUnit.enterTheMap(path);
+                    enemyQueue.remove(i);
                     break;
                 }
             }

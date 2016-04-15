@@ -13,6 +13,11 @@ public class Path extends PhysicalEntity{
     // local vars
     private static int idCounter = 1;
     private int myId;
+
+    public String getDirection() {
+        return direction;
+    }
+
     private String direction;
 
     public Path(World world, ArrayList<Cell> cells, String direction) {

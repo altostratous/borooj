@@ -4,6 +4,7 @@ package engine;
  * Each soldier has a path that is asignned by gate that make it start moving
  */
 public class Soldier extends AliveEnemyUnit {
+
     public Soldier(int fullHealth, int timerInterval, Gate entringGate, World world) {
         super(fullHealth, timerInterval, entringGate, world);
     }
@@ -13,9 +14,10 @@ public class Soldier extends AliveEnemyUnit {
      * Moves the soldier to next cell
      */
     public void move() {
-        stepCounter++;
-        setCell(path.getCell(stepCounter));
-        //System.out.println("AliveEnemyUnit is on step " + stepCounter + " Position " + getCell().getPosition().toString());
+        setStepCounter(getStepCounter() + 1);
+        setCell(path.getCell(getStepCounter()));
+//            if (path.getCells().size() == 8)
+//        System.out.println(getStepCounter() + this.toString() + " "  + getCell().getPosition().toString());
         //Bug Here getCells is an ArrayList
         if (getCell().equals(path.getLastCell())) {
             if (getWorld().getCastle().getArea().containsKey(getCell().getPosition())) {
@@ -24,7 +26,6 @@ public class Soldier extends AliveEnemyUnit {
                 throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
             }
         }
-
     }
 
 

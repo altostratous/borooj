@@ -14,6 +14,7 @@ public class CommandProcessor {
     private Scanner scanner;
     private boolean pleaseCancel;
 
+
     public CommandProcessor(PrintStream out, World world, InputStream inputStream) {
         this.out = out;
         this.world = world;
@@ -110,13 +111,15 @@ public class CommandProcessor {
         // Printing paths
         for (Path path :
                 world.getGate().getPaths()) {
-            for (Cell cell :
-                    path.getCells()) {
+            String direction = path.getDirection() + "C";
+            for (int i = 0; i < path.getCells().size(); i++) {
+                Cell cell = path.getCells().get(i);
                 int x = (int) cell.getPosition().getX();
                 int y = (int) cell.getPosition().getY();
-                table[y][x] = 'P';
+                table[y][x] = direction.charAt(i);
             }
         }
+
 
         // Printing Gate
         for (Cell cell :
@@ -166,5 +169,4 @@ public class CommandProcessor {
             out.println(validationState);
         }
     }
-
 }
