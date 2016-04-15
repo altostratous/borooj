@@ -124,6 +124,7 @@ public class CommandProcessor {
      */
     public void display() {
         Map map = world.getMap();
+        out.println("Life: " + world.getCastle().getLife());
         String[][] table = new String[map.getHeight()][map.getWidth()];
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
@@ -145,6 +146,8 @@ public class CommandProcessor {
                     table[y][x] = "" + '<';
                 if (table[y][x].equals("" + 'u'))
                     table[y][x] = "" + '^';
+                if (table[y][x].equals("" + 'd'))
+                    table[y][x] = "" + 'v';
             }
         }
 

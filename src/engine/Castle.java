@@ -75,6 +75,7 @@ public class Castle extends PhysicalEntity {
      * Decrease life by one unit
      */
     private void decreaseLife() {
+        // TODO: 4/15/2016 Decreasing Life has BUGS Ali Asgari
         setLife(getLife() - 1);
         if (getLife() <= 0) {
             getWorld().onGameOver();
