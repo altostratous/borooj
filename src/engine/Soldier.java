@@ -26,6 +26,7 @@ public class Soldier extends AliveEnemyUnit {
                 throw new IllegalStateException("me: AliveEnemyUnit is in the last cell of path but it is not castle");
             }
         }
+
     }
 
 

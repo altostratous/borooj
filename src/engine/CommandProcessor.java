@@ -1,11 +1,12 @@
 package engine;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+//COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CommandProcessor {
     // TODO: 4/6/2016 Ali implement this class
@@ -65,6 +66,17 @@ public class CommandProcessor {
         } else {
             out.println(validationState);
         }
+        CommandProcessor th = this;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //cmdp.clear();
+                th.printNewLine(10);
+                th.display();
+
+            }
+        }, 0, 2000);
     }
 
     private void tower() {
@@ -98,14 +110,24 @@ public class CommandProcessor {
     }
 
     /**
+     * prints \n as many as count!
+     *
+     * @param count count of \n
+     */
+    public void printNewLine(int count) {
+        for (int i = 0; i < count; i++) {
+            out.print("\n");
+        }
+    }
+    /**
      * To display the map
      */
     public void display() {
         Map map = world.getMap();
-        char[][] table = new char[map.getHeight()][map.getWidth()];
+        String[][] table = new String[map.getHeight()][map.getWidth()];
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
-                table[j][i] = '#';
+                table[j][i] = "" + '#';
             }
         }
         // Printing paths
@@ -116,7 +138,13 @@ public class CommandProcessor {
                 Cell cell = path.getCells().get(i);
                 int x = (int) cell.getPosition().getX();
                 int y = (int) cell.getPosition().getY();
-                table[y][x] = direction.charAt(i);
+                table[y][x] = "" + direction.charAt(i);
+                if (table[y][x].equals("" + 'r'))
+                    table[y][x] = "" + '>';
+                if (table[y][x].equals("" + 'l'))
+                    table[y][x] = "" + '<';
+                if (table[y][x].equals("" + 'u'))
+                    table[y][x] = "" + '^';
             }
         }
 
@@ -126,7 +154,7 @@ public class CommandProcessor {
                 world.getGate().getCells()) {
             int x = (int) cell.getPosition().getX();
             int y = (int) cell.getPosition().getY();
-            table[y][x] = 'G';
+            table[y][x] = "" + 'G';
         }
 
         // Printing Units
@@ -136,25 +164,30 @@ public class CommandProcessor {
 
                 int x = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getX();
                 int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
-                table[y][x] = '1';
+
+                table[y][x] = "\u001B[31m" + table[y][x] + "\u001B[0m";
             }
         }
 
 
-        int test = 1;
         // Printing castle
         for (Cell cell :
                 world.getCastle().getCells()) {
             int x = (int) cell.getPosition().getX();
             int y = (int) cell.getPosition().getY();
-            table[y][x] = 'C';
+            table[y][x] = "" + 'C';
         }
 
 
         // Printing map
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {
+//                if (table[j][i].equals("" + '1'))
+//                    out.print("\u001B[31m");
                 out.print(table[j][i]);
+
+//                if (table[j][i].equals("" + '1'))
+//                    out.print("\u001B[0m");
             }
             out.println("");
         }

@@ -268,6 +268,7 @@ public class World {
             timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
         }
         //gate.start();
+
         return ValidationState.VALID;
     }
 }
