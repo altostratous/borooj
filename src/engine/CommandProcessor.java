@@ -27,34 +27,7 @@ public class CommandProcessor {
     public void start() {
         while (!pleaseCancel) {
             String command = scanner.next();
-            if (command.equals("exit")) {
-                pleaseCancel = true;
-                continue;
-            }
-
-            if (command.equals("new-game")) {
-                newGame();
-                continue;
-            }
-            if (command.equals("display")) {
-                display();
-                continue;
-            }
-            if (command.equals("set-config")) {
-                setConfig();
-                continue;
-            }
-            if (command.equals("set-map")) {
-                setMap();
-                continue;
-            }
-            if (command.equals("tower")) {
-                tower();
-            }
-            if (command.equals("start-game")) {
-                startGame();
-            }
-
+            run(command);
         }
 
     }
@@ -76,7 +49,7 @@ public class CommandProcessor {
                 th.display();
 
             }
-        }, 0, 2000);
+        }, 0, 500);
     }
 
     private void tower() {
@@ -100,12 +73,19 @@ public class CommandProcessor {
     }
 
     private void setConfig() {
-        String configPath = scanner.nextLine();
-        ValidationState validationState = world.setConfig(configPath);
-        if (validationState.equals(ValidationState.VALID)) {
-            out.println("Config set successfully!");
-        } else {
-            out.println(validationState);
+        boolean problem = true;
+        while (problem) {
+            try {
+                String configPath = scanner.nextLine();
+                ValidationState validationState = world.setConfig(configPath);
+                if (validationState.equals(ValidationState.VALID)) {
+                    out.println("Config set successfully!");
+                } else {
+                    out.println(validationState);
+                }
+            } catch (Exception ex) {
+                problem = true;
+            }
         }
     }
 
@@ -203,6 +183,36 @@ public class CommandProcessor {
             out.println("New game started successfully!");
         } else {
             out.println(validationState);
+        }
+    }
+
+    public void run(String command) {
+        if (command.equals("exit")) {
+            pleaseCancel = true;
+            return;
+        }
+
+        if (command.equals("new-game")) {
+            newGame();
+            return;
+        }
+        if (command.equals("display")) {
+            display();
+            return;
+        }
+        if (command.equals("set-config")) {
+            setConfig();
+            return;
+        }
+        if (command.equals("set-map")) {
+            setMap();
+            return;
+        }
+        if (command.equals("tower")) {
+            tower();
+        }
+        if (command.equals("start-game")) {
+            startGame();
         }
     }
 }

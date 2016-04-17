@@ -55,4 +55,8 @@ public class ValidationState {
      * Error of unavailable base to base an object
      */
     public static final ValidationState INVALID_BASE = new ValidationState("The base position is invalid.", 1);
+    /**
+     * Error of file for example config file
+     */
+    public static final ValidationState INVALID_FILE = new ValidationState("The file address or the file content has some problem.", 2);
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <commands>
+        <command>start-game</command>
+    </commands>
+    <timer-scale>1</timer-scale>
+    <hello></hello>
+    <hello>
+
+    </hello>
+</configuration>

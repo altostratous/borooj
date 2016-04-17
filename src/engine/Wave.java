@@ -51,7 +51,7 @@ public class Wave {
             AliveEnemyUnit enemy;
             switch (enemyType) {
                 case "Soldier":
-                    enemy = new Soldier(200, 2000, gate, world);
+                    enemy = new Soldier(200, 300, gate, world);
                     break;
                 default:
                     throw new IllegalStateException("Enemy type is not defined.");

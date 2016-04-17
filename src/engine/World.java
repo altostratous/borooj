@@ -6,18 +6,24 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 //import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
  * The class to model the environment of the game
  */
 public class World {
+    // field for scaling the time in game
+    private int timerScale;
+
     /**
      * Get Timer
      *
@@ -81,7 +87,7 @@ public class World {
      */
     public void addPhysicalEntity(PhysicalEntity pe) {
         physicalEntities.add(pe);
-        timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
+        timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
     }
 
     /**
@@ -122,6 +128,7 @@ public class World {
     public World(String mapFilePath, String configurationFilePath) throws Exception
     {
         generateControls(mapFilePath);
+        setConfig(configurationFilePath);
     }
 
     public void callWave() {
@@ -235,7 +242,24 @@ public class World {
      * @return ValidationState representing the validation of the order
      */
     public ValidationState setConfig(String configPath) {
-        throw new NotImplementedException();
+        // do some stuff to get document form the map file
+        File file = new File(configPath);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+                .newInstance();
+
+        try {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(file);
+
+            // get the map element in the file
+            Element mapElement = document.getDocumentElement();
+
+            // get ftimer scale node
+            this.timerScale = Integer.parseInt(mapElement.getElementsByTagName("timer-scale").item(0).getTextContent());
+            return ValidationState.VALID;
+        } catch (Exception ex) {
+            return ValidationState.INVALID_FILE;
+        }
     }
 
     /**
@@ -265,7 +289,7 @@ public class World {
         //throw new NotImplementedException();
         for (PhysicalEntity pe :
                 physicalEntities) {
-            timer.schedule(pe.getTimerTask(), 0, pe.getInterval());
+            timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
         }
         //gate.start();
 
