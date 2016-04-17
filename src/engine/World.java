@@ -2,6 +2,7 @@ package engine;
 
 import java.awt.*;
 
+import jdk.nashorn.internal.ir.ContinueNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -233,7 +234,12 @@ public class World {
      * @return ValidationState representing the validation of the order
      */
     public ValidationState addTower(Point base) {
-        throw new NotImplementedException();
+        if (map.getCells().get(base).getEntities().size() > 0)
+            return ValidationState.INVALID_BASE;
+        // set interval from data
+        Tower tower = new Tower(this, base, 300);
+        addPhysicalEntity(tower);
+        return ValidationState.VALID;
     }
 
     /**

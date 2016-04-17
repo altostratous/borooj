@@ -3,7 +3,7 @@
     <commands>
         <command>start-game</command>
     </commands>
-    <timer-scale>1</timer-scale>
+    <timer-scale>50</timer-scale>
     <hello></hello>
     <hello>
 

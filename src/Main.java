@@ -41,6 +41,15 @@ public class Main {
         }
     }
 
+    /**
+     * Gets preset commands from an XML file
+     *
+     * @param path the path to the xml file
+     * @return an array list of strings representing the commands
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
     private static ArrayList<String> getCommands(String path) throws ParserConfigurationException, IOException, SAXException {
         // do some stuff to get document form the map file
         File file = new File(path);
