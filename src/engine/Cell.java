@@ -39,6 +39,8 @@ public class Cell {
         this.entities = new ArrayList<>();
     }
 
+    public Cell() {
+    }
     /**
      * Gets the position of the cell
      * @return a Point

@@ -14,12 +14,26 @@ public class Missile {
     /**
      * Constructs the missile
      *
-     * @param target the target that the missile goes to
      * @param power  the power of the missile
      */
-    public Missile(Cell target, int power) {
-        this.target = target;
+    public Missile(int power) {
         this.power = power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public void setTarget(Cell target) {
+        this.target = target;
+    }
+
+    public Cell getTarget() {
+        return target;
+    }
+
+    public int getPower() {
+        return power;
     }
 
     /**
