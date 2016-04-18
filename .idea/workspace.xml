@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9b3031e-6abc-443d-bb6e-04b6eba8b70f" name="Default" comment="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time&#10;&#10;in Cell:&#10;adding the default constructor">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/borooj/Main.class" afterPath="$PROJECT_DIR$/out/production/borooj/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Cell.java" afterPath="$PROJECT_DIR$/src/engine/Cell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Missile.java" afterPath="$PROJECT_DIR$/src/engine/Missile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Tower.java" afterPath="$PROJECT_DIR$/src/engine/Tower.java" />
     </list>
     <ignored path="borooj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -859,7 +855,7 @@
       <updated>1458959564935</updated>
       <workItem from="1460963102446" duration="78000" />
       <workItem from="1460974132077" duration="1090000" />
-      <workItem from="1461001301255" duration="5916000" />
+      <workItem from="1461001301255" duration="6536000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed HashMap&lt;Point, Cell&gt; bug.&#10;&#10;Used java built in point instead of Point class.">
       <created>1458991864205</created>
@@ -1029,11 +1025,17 @@
       <option name="project" value="LOCAL" />
       <updated>1460892749066</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time&#10;&#10;in Cell:&#10;adding the default constructor">
+      <created>1461007288361</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1461007288361</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7084000" />
+    <option name="totallyTimeSpent" value="7704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
