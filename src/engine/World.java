@@ -43,6 +43,15 @@ public class World {
         return castle;
     }
 
+    public ArrayList<AliveEnemyUnit> getAliveEnemyUnits() {
+        ArrayList<AliveEnemyUnit> listOfAlives = new ArrayList<AliveEnemyUnit>();
+        for (PhysicalEntity a : this.getPhysicalEntities()) {
+            if (a instanceof AliveEnemyUnit) {
+                listOfAlives.add((AliveEnemyUnit) a);
+            }
+        }
+        return listOfAlives;
+    }
     /**
      * Sets the castle in the world
      * @param castle the castle
