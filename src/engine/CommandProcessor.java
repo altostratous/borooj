@@ -50,7 +50,7 @@ public class CommandProcessor {
                 th.display();
 
             }
-        }, 0, 2000);
+        }, 5, 1000);
     }
 
     private void tower() {

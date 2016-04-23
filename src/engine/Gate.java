@@ -30,6 +30,7 @@ public class Gate extends PhysicalEntity{
      */
     public Gate(NodeList pathNodes, World world) throws Exception {
         super(world);
+
         // SET GATE CELLS
         // for each path element in the map file
         ArrayList<Cell> cells = new ArrayList<>();

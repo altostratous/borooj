@@ -177,7 +177,7 @@ public class World {
         // init gate
         this.gate = new Gate(pathsElements, this);
         // simple interval to test the functionality
-        this.gate.setInterval(1000);
+        this.gate.setInterval(5000);
         // register the gate as a physical entity
         this.physicalEntities.add(this.gate);
 
@@ -192,7 +192,7 @@ public class World {
         this.timer = new Timer();
         for (PhysicalEntity pe :
                 physicalEntities) {
-            timer.schedule(pe.getTimerTask(), pe.getInterval());
+            //timer.schedule(pe.getTimerTask(), pe.getInterval());
         }
     }
 
@@ -243,10 +243,11 @@ public class World {
      * @return ValidationState representing the validation of the order
      */
     public ValidationState addTower(Point base) {
+        //BUG: Multiple Towers can be added to one point
         if (map.getCells().get(base).getEntities().size() > 0)
             return ValidationState.INVALID_BASE;
         // set interval from data
-        Tower tower = new Tower(this, base, 5000, 7);
+        Tower tower = new Tower(this, base, 1000, 7);
         addPhysicalEntity(tower);
         return ValidationState.VALID;
     }
@@ -304,10 +305,10 @@ public class World {
         //throw new NotImplementedException();
         for (PhysicalEntity pe :
                 physicalEntities) {
-            timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
+            //timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
         }
         //gate.start();
-
+        timer.schedule(gate.getTimerTask(), 0, timerScale * gate.getInterval());
         return ValidationState.VALID;
     }
 }
