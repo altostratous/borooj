@@ -34,7 +34,7 @@ public abstract class PhysicalEntity {
     public PhysicalEntity(World world, int interval) {
         setWorld(world);
         setInterval(interval);
-        setMap(map);
+        setMap(world.getMap());
     }
 
     /**

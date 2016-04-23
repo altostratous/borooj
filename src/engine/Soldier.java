@@ -9,6 +9,7 @@ public class Soldier extends AliveEnemyUnit {
         super(fullHealth, timerInterval, entringGate, world);
     }
 
+    //public int getLimitedPath
 
     /**
      * Moves the soldier to next cell

@@ -1,6 +1,7 @@
 package engine;
 
 //COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+
 import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -99,6 +100,7 @@ public class CommandProcessor {
             out.print("\n");
         }
     }
+
     /**
      * To display the map
      */
@@ -149,6 +151,12 @@ public class CommandProcessor {
                 int y = (int) ((AliveEnemyUnit) pe).getCell().getPosition().getY();
 
                 table[y][x] = "\u001B[31m" + table[y][x] + "\u001B[0m";
+            } else if (pe instanceof Tower) {
+                //ATTENTION: getCells.get(0) does NOT work with multi cell towers
+                int x = (int) ((Tower) pe).getCells().get(0).getPosition().getX();
+                int y = (int) ((Tower) pe).getCells().get(0).getPosition().getY();
+
+                table[y][x] = "T";
             }
         }
 

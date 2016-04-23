@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Tower extends PhysicalEntity {
     // TODO: 4/17/2016 Hamid implement this class please
     private int range;
+
     private int distance(Cell a, ArrayList<Cell> arr) {
         int minDistance = Integer.MAX_VALUE;
         int tmp;
@@ -32,6 +33,7 @@ public class Tower extends PhysicalEntity {
         cells.add(getMap().getCells().get(base));
         setCells(cells);
         this.range = range;
+        getWorld().getTimer().schedule(Tower.super.getTimerTask(), 0, Tower.super.getInterval());
     }
 
     private Cell priorAttackingEnemy(ArrayList<AliveEnemyUnit> listOfAlives) {
@@ -64,7 +66,6 @@ public class Tower extends PhysicalEntity {
 
     @Override
     public void timerTick() {
-//        getWorld().getTimer().schedule(Tower.super.getTimerTask(),0,Tower.super.getInterval());
         Cell target = this.priorAttackingEnemy(getWorld().getAliveEnemyUnits());
         if (target != null) {
             Missile missile = new Missile(200, target);

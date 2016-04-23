@@ -25,6 +25,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 
     private int stepCounter;
 
+
     /**
      * Constructs Alive Enemy Unit by given properties
      */
@@ -116,6 +117,15 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     {
         damage(getHealth());
 
+    }
+
+    /**
+     * returns count of left cells to castle
+     *
+     * @return
+     */
+    public int distanceToCastle() {
+        return path.getCells().size() - stepCounter;
     }
 
     /**

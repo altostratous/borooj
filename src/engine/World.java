@@ -246,7 +246,7 @@ public class World {
         if (map.getCells().get(base).getEntities().size() > 0)
             return ValidationState.INVALID_BASE;
         // set interval from data
-        Tower tower = new Tower(this, base, 300, 7);
+        Tower tower = new Tower(this, base, 5000, 7);
         addPhysicalEntity(tower);
         return ValidationState.VALID;
     }
