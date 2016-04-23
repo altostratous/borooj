@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9b3031e-6abc-443d-bb6e-04b6eba8b70f" name="Default" comment="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time&#10;&#10;in Cell:&#10;adding the default constructor">
+    <list default="true" id="a9b3031e-6abc-443d-bb6e-04b6eba8b70f" name="Default" comment="TimerTick completed in Tower.java">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Missile.java" afterPath="$PROJECT_DIR$/src/engine/Missile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Tower.java" afterPath="$PROJECT_DIR$/src/engine/Tower.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/World.java" afterPath="$PROJECT_DIR$/src/engine/World.java" />
     </list>
     <ignored path="borooj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +30,7 @@
       <file leaf-file-name="Tower.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine/Tower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60855263">
+            <state vertical-scroll-proportion="0.6365132">
               <caret line="67" column="77" selection-start-line="67" selection-start-column="77" selection-end-line="67" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -847,7 +844,7 @@
       <workItem from="1461229245156" duration="257000" />
       <workItem from="1461297129466" duration="118000" />
       <workItem from="1461391510944" duration="1164000" />
-      <workItem from="1461398648564" duration="1060000" />
+      <workItem from="1461398648564" duration="1113000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed HashMap&lt;Point, Cell&gt; bug.&#10;&#10;Used java built in point instead of Point class.">
       <created>1458991864205</created>
@@ -1029,11 +1026,17 @@
       <option name="project" value="LOCAL" />
       <updated>1461008220484</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="TimerTick completed in Tower.java">
+      <created>1461399738811</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1461399738811</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11303000" />
+    <option name="totallyTimeSpent" value="11356000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1050,6 +1053,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.49583334" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31045407" sideWeight="0.48638427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5121029" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1063,7 +1067,6 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31045407" sideWeight="0.48638427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1109,7 +1112,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added simple map.&#10;&#10;Now maps can be created from xml files.&#10;A simple xml map is in data directory." />
     <MESSAGE value="Added some todo s for the project.&#10;&#10;Mohammad for Mohammad Haghighat&#10;Hamid for Hammid Hashemi&#10;Ali for Ali Asgari" />
     <MESSAGE value="Initially implemented display() method" />
     <MESSAGE value="Implemented command processor. &#10;&#10;Added command actions and related world functions." />
@@ -1134,7 +1136,8 @@
     <MESSAGE value="Added command storing and time scaling.&#10;&#10;Added a config determining how much the display should be slow and now preset commands can be set in configuration file." />
     <MESSAGE value="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time" />
     <MESSAGE value="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time&#10;&#10;in Cell:&#10;adding the default constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing Tower class and adding some changes to Missile class.&#10;&#10;I dont know basic informations about timerTick and its fuctionality.&#10;I didn't implement that.&#10;&#10;Changelog:&#10;&#10;in Tower:&#10;changing the output of getNearByenemies to Cell&#10;changing the name of getNearByEnemies to priorAttakingEnemy&#10;changing the name of getCannonPower to getMissilePower&#10;reomving getCell method because the parent already have it&#10;&#10;in Missile:&#10;adding setter and getter methods&#10;removing setting target in constructor because it changes over time&#10;&#10;in Cell:&#10;adding the default constructor" />
+    <MESSAGE value="TimerTick completed in Tower.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="TimerTick completed in Tower.java" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1567,7 +1570,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/Tower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60855263">
+        <state vertical-scroll-proportion="0.6365132">
           <caret line="67" column="77" selection-start-line="67" selection-start-column="77" selection-end-line="67" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
