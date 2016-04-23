@@ -12,12 +12,12 @@ public class Tower extends PhysicalEntity {
     // TODO: 4/17/2016 Hamid implement this class please
     private int range;
 
-    private int distance(Cell a, ArrayList<Cell> arr) {
+    private int distanceToTower(Cell a) {
         int minDistance = Integer.MAX_VALUE;
         int tmp;
         Point s = a.getPosition();
         Point t;
-        for (Cell b : arr) {
+        for (Cell b : this.getCells()) {
             t = b.getPosition();
             tmp = Math.abs((int) s.getX() - (int) t.getX()) + Math.abs((int) s.getY() - (int) t.getY());
             if (tmp < minDistance)
@@ -40,7 +40,7 @@ public class Tower extends PhysicalEntity {
         ArrayList<AliveEnemyUnit> listOfPriors = new ArrayList<AliveEnemyUnit>();
         int minHealth = Integer.MAX_VALUE;
         for (AliveEnemyUnit a : listOfAlives) {
-            if (distance(a.getCell(), this.getCells()) > range)
+            if (distanceToTower(a.getCell()) > range)
                 continue;
             ;
             if (a.getHealth() == minHealth)
@@ -54,8 +54,8 @@ public class Tower extends PhysicalEntity {
         int minDistance = Integer.MAX_VALUE;
         Cell answer = new Cell();
         for (AliveEnemyUnit a : listOfPriors) {
-            if (distance(a.getCell(), getWorld().getCastle().getCells()) < minDistance) {
-                minDistance = distance(a.getCell(), getWorld().getCastle().getCells());
+            if (a.distanceToCastle() < minDistance) {
+                minDistance = a.distanceToCastle();
                 answer = a.getCell();
             }
         }
