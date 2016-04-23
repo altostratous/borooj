@@ -11,8 +11,6 @@ import java.util.ArrayList;
 public class Tower extends PhysicalEntity {
     // TODO: 4/17/2016 Hamid implement this class please
     private int range;
-    private Missile missile;
-
     private int distance(Cell a, ArrayList<Cell> arr) {
         int minDistance = Integer.MAX_VALUE;
         int tmp;
@@ -27,33 +25,26 @@ public class Tower extends PhysicalEntity {
         return minDistance;
     }
 
-    public Tower(World world, int interval, int range, Missile missile) {
-        super(world, interval);
-        this.range = range;
-        this.missile = missile;
-    }
-
-    public Tower(World world, Point base, int interval, int range, Missile missile) {
+    public Tower(World world, Point base, int interval, int range) {
         // init the tower, may be later extended
         super(world, interval);
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(getMap().getCells().get(base));
         setCells(cells);
         this.range = range;
-        this.missile = missile;
     }
 
-    public Cell priorAttackingEnemy(ArrayList<AliveEnemyUnit> listOfAlives) {
+    private Cell priorAttackingEnemy(ArrayList<AliveEnemyUnit> listOfAlives) {
         ArrayList<AliveEnemyUnit> listOfPriors = new ArrayList<AliveEnemyUnit>();
-        int minHp = Integer.MAX_VALUE;
+        int minHealth = Integer.MAX_VALUE;
         for (AliveEnemyUnit a : listOfAlives) {
             if (distance(a.getCell(), this.getCells()) > range)
                 continue;
             ;
-            if (a.getHealth() == minHp)
+            if (a.getHealth() == minHealth)
                 listOfPriors.add(a);
-            else if (a.getHealth() < minHp) {
-                minHp = a.getHealth();
+            else if (a.getHealth() < minHealth) {
+                minHealth = a.getHealth();
                 listOfPriors.clear();
                 listOfPriors.add(a);
             }
@@ -61,25 +52,23 @@ public class Tower extends PhysicalEntity {
         int minDistance = Integer.MAX_VALUE;
         Cell answer = new Cell();
         for (AliveEnemyUnit a : listOfPriors) {
-            if (distance(a.getCell(), castle.getCells()) < minDistance) {
-                minDistance = distance(a.getCell(), castle.getCells());
+            if (distance(a.getCell(), getWorld().getCastle().getCells()) < minDistance) {
+                minDistance = distance(a.getCell(), getWorld().getCastle().getCells());
                 answer = a.getCell();
             }
         }
+        if (minDistance == Integer.MAX_VALUE)
+            return null;
         return answer;
-    }
-
-    public int getMissilePower() {
-        return this.missile.getPower();
-    }
-
-    public void fire(Cell target) {
-        this.missile.setTarget(target);
-        this.missile.explode();
     }
 
     @Override
     public void timerTick() {
-        throw new NotImplementedException();
+//        getWorld().getTimer().schedule(Tower.super.getTimerTask(),0,Tower.super.getInterval());
+        Cell target = this.priorAttackingEnemy(getWorld().getAliveEnemyUnits());
+        if (target != null) {
+            Missile missile = new Missile(200, target);
+            missile.explode();
+        }
     }
 }

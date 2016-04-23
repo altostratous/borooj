@@ -16,8 +16,9 @@ public class Missile {
      *
      * @param power  the power of the missile
      */
-    public Missile(int power) {
+    public Missile(int power, Cell target) {
         this.power = power;
+        this.target = target;
     }
 
     public void setPower(int power) {
