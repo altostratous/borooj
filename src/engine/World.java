@@ -249,6 +249,12 @@ public class World {
         // set interval from data
         Tower tower = new Tower(this, base, 1000, 7);
         addPhysicalEntity(tower);
+        
+        // set tower as the physical entity for the cell
+        ArrayList<PhysicalEntity> physicalEntities = new ArrayList<>();
+        physicalEntities.add(tower);
+        map.getCells().get(base).setEntities(physicalEntities);
+
         return ValidationState.VALID;
     }
 

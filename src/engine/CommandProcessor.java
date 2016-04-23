@@ -16,6 +16,30 @@ public class CommandProcessor {
     private Scanner scanner;
     private boolean pleaseCancel;
 
+    // command buffer for inner usage
+    private String buffer;
+
+    /**
+     * Get next string either from buffer or scanner
+     *
+     * @return a string
+     */
+    private String next() {
+        if (buffer.length() == 0)
+            return scanner.next();
+        else {
+
+            String res;
+            if (buffer.contains(" ")) {
+                res = buffer.substring(0, buffer.indexOf(' '));
+                buffer = buffer.substring(buffer.indexOf(' ') + 1);
+            } else {
+                res = buffer;
+                buffer = "";
+            }
+            return res;
+        }
+    }
 
     public CommandProcessor(PrintStream out, World world, InputStream inputStream) {
         this.out = out;
@@ -27,8 +51,8 @@ public class CommandProcessor {
 
     public void start() {
         while (!pleaseCancel) {
-            String command = scanner.next();
-            run(command);
+            String command = next();
+            innerRun(command);
         }
 
     }
@@ -54,7 +78,7 @@ public class CommandProcessor {
     }
 
     private void tower() {
-        Point base = new Point(scanner.nextInt(), scanner.nextInt());
+        Point base = new Point(Integer.parseInt(next()), Integer.parseInt(next()));
         ValidationState validationState = world.addTower(base);
         if (validationState.equals(ValidationState.VALID)) {
             out.println("Tower added successfully!");
@@ -64,7 +88,7 @@ public class CommandProcessor {
     }
 
     private void setMap() {
-        String configPath = scanner.nextLine();
+        String configPath = nextLine();
         ValidationState validationState = world.setMap(configPath);
         if (validationState.equals(ValidationState.VALID)) {
             out.println("Map set successfully!");
@@ -73,11 +97,24 @@ public class CommandProcessor {
         }
     }
 
+    /**
+     * Get next line either from buffer or scanner
+     *
+     * @return a string
+     */
+    private String nextLine() {
+        if (buffer.length() == 0)
+            return scanner.nextLine();
+        String res = buffer;
+        buffer = "";
+        return res;
+    }
+
     private void setConfig() {
         boolean problem = true;
         while (problem) {
             try {
-                String configPath = scanner.nextLine();
+                String configPath = nextLine();
                 ValidationState validationState = world.setConfig(configPath);
                 if (validationState.equals(ValidationState.VALID)) {
                     out.println("Config set successfully!");
@@ -194,7 +231,7 @@ public class CommandProcessor {
         }
     }
 
-    public void run(String command) {
+    public void innerRun(String command) {
         if (command.equals("exit")) {
             pleaseCancel = true;
             return;
@@ -222,5 +259,10 @@ public class CommandProcessor {
         if (command.equals("start-game")) {
             startGame();
         }
+    }
+
+    public void run(String command) {
+        buffer = command;
+        innerRun(next());
     }
 }

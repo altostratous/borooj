@@ -2,6 +2,9 @@
 <configuration>
     <commands>
         <command>start-game</command>
+        <command>tower 10 1</command>
+        <command>tower 10 2</command>
+        <command>tower 10 3</command>
     </commands>
     <timer-scale>1</timer-scale>
     <hello></hello>
