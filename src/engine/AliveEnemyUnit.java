@@ -58,7 +58,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
      * If the enemy unit is remained in a single cell gets that
      * @return RETURN A cell
      */
-    public Cell getCell() {
+    public synchronized Cell getCell() {
         if (getCells().size() != 1)
             throw new InvalidStateException("The Alive enemy unit is not remained in a single cell");
         return getCells().get(0);

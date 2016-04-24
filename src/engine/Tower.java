@@ -37,7 +37,7 @@ public class Tower extends PhysicalEntity {
     }
 
     private Cell priorAttackingEnemy(ArrayList<AliveEnemyUnit> listOfAlives) {
-        ArrayList<AliveEnemyUnit> listOfPriors = new ArrayList<AliveEnemyUnit>();
+        ArrayList<AliveEnemyUnit> listOfPriors = new ArrayList<>();
         int minHealth = Integer.MAX_VALUE;
         for (AliveEnemyUnit a : listOfAlives) {
             if (distanceToTower(a.getCell()) > range)

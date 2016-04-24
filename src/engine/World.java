@@ -42,9 +42,11 @@ public class World {
         return castle;
     }
 
-    public ArrayList<AliveEnemyUnit> getAliveEnemyUnits() {
-        ArrayList<AliveEnemyUnit> listOfAlives = new ArrayList<AliveEnemyUnit>();
-        for (PhysicalEntity a : this.getPhysicalEntities()) {
+    public synchronized ArrayList<AliveEnemyUnit> getAliveEnemyUnits() {
+        ArrayList<AliveEnemyUnit> listOfAlives = new ArrayList<>();
+        ArrayList<PhysicalEntity> PEs = this.getPhysicalEntities();
+        for (PhysicalEntity a : PEs
+                ) {
             if (a instanceof AliveEnemyUnit) {
                 listOfAlives.add((AliveEnemyUnit) a);
             }
