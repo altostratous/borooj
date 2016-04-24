@@ -89,6 +89,8 @@ public class Castle extends PhysicalEntity {
     public void damage(AliveEnemyUnit attacker) {
         decreaseLife();
         attacker.destroy();
+        if (getWorld().getAliveEnemyUnits().size() == 0)
+            getWorld().checkGameOver();
     }
 
     /**

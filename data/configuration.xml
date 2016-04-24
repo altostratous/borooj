@@ -96,7 +96,7 @@
         <command>tower 12 17</command>
         <command>tower 12 18</command>
     </commands>
-    <timer-scale>1</timer-scale>
+    <timer-scale>3</timer-scale>
     <hello></hello>
     <hello>
 

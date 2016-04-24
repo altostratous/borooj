@@ -137,13 +137,15 @@ public class World {
     {
         generateControls(mapFilePath);
         setConfig(configurationFilePath);
-        money = 10000;
+        // TODO: 4/24/2016 load money from external resource 
+        money = 22;
     }
 
     public void callWave() {
         // TODO: 4/13/2016 Check limit of waves 
         wavesCounter++;
-        waves.get(wavesCounter).startWaving();
+        if (wavesCounter < waves.size())
+            waves.get(wavesCounter).startWaving();
     }
 
     /**
@@ -194,7 +196,8 @@ public class World {
         // init gate
         this.gate = new Gate(pathsElements, this);
         // simple interval to test the functionality
-        this.gate.setInterval(5000);
+        // TODO: 4/24/2016 Load from external resource 
+        this.gate.setInterval(600);
         // register the gate as a physical entity
         this.physicalEntities.add(this.gate);
 
@@ -276,7 +279,7 @@ public class World {
         // set interval from data
         if (this.money >= Tower.getCost()) {
             this.money -= Tower.getCost();
-            Tower tower = new Tower(this, base, 1000, 7);
+            Tower tower = new Tower(this, base, 300, 7);
 
             addPhysicalEntity(tower);
 
@@ -350,5 +353,37 @@ public class World {
         //gate.start();
         timer.schedule(gate.getTimerTask(), 0, timerScale * gate.getInterval());
         return ValidationState.VALID;
+    }
+
+    /**
+     * Checks is the game is over
+     */
+    public void checkGameOver() {
+        if (getCastle().getLife() <= 0) {
+            onGameOver();
+            return;
+        }
+        if (wavesCounter == waves.size() - 1) {
+            onGameOver();
+            return;
+        }
+    }
+
+    /**
+     * Gets money
+     *
+     * @return an int
+     */
+    public int getMoney() {
+        return money;
+    }
+
+    /**
+     * Sets money
+     *
+     * @param money the money to be set
+     */
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

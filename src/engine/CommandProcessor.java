@@ -144,6 +144,7 @@ public class CommandProcessor {
     public void display() {
         Map map = world.getMap();
         out.println("Life: " + world.getCastle().getLife());
+        out.println("Money: " + world.getMoney());
         String[][] table = new String[map.getHeight()][map.getWidth()];
         for (int j = 0; j < map.getHeight(); j++) {
             for (int i = 0; i < map.getWidth(); i++) {

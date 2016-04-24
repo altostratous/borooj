@@ -91,6 +91,7 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
 //            getWorld().getCmdp().print("\u001B[34m" + "AliveEnemyUnit at " + getCell().getPosition().toString() + " is destroyed" + "\u001B[0m");
 //            getWorld().getCmdp().printNewLine(1);
             getWorld().getPhysicalEntities().remove(this);
+            getWorld().setMoney(getWorld().getMoney() + this.getCost());
         } else {
             health -= value;
         }
@@ -137,4 +138,6 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     public int getFullHealth() {
         return fullHealth;
     }
+
+    public abstract int getCost();
 }

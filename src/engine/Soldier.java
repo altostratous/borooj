@@ -9,6 +9,16 @@ public class Soldier extends AliveEnemyUnit {
         super(fullHealth, timerInterval, entringGate, world);
     }
 
+    /**
+     * Return the cost of the enmey
+     *
+     * @return int
+     */
+    @Override
+    public int getCost() {
+        return 1;
+    }
+
     //public int getLimitedPath
 
     /**
