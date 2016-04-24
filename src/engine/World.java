@@ -42,13 +42,15 @@ public class World {
         return castle;
     }
 
-    public synchronized ArrayList<AliveEnemyUnit> getAliveEnemyUnits() {
+    public ArrayList<AliveEnemyUnit> getAliveEnemyUnits() {
         ArrayList<AliveEnemyUnit> listOfAlives = new ArrayList<>();
         ArrayList<PhysicalEntity> PEs = this.getPhysicalEntities();
-        for (PhysicalEntity a : PEs
-                ) {
-            if (a instanceof AliveEnemyUnit) {
-                listOfAlives.add((AliveEnemyUnit) a);
+        synchronized (PEs) {
+            for (PhysicalEntity a : PEs
+                    ) {
+                if (a instanceof AliveEnemyUnit) {
+                    listOfAlives.add((AliveEnemyUnit) a);
+                }
             }
         }
         return listOfAlives;
@@ -97,8 +99,10 @@ public class World {
      * @param pe the physical entity to add
      */
     public void addPhysicalEntity(PhysicalEntity pe) {
-        physicalEntities.add(pe);
-        timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
+        synchronized (physicalEntities) {
+            physicalEntities.add(pe);
+            timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
+        }
     }
 
     /**
