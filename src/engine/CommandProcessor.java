@@ -70,7 +70,7 @@ public class CommandProcessor {
             @Override
             public void run() {
                 //cmdp.clear();
-                th.printNewLine(10);
+                th.printNewLine(3);
                 th.display();
 
             }
