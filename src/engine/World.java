@@ -269,6 +269,11 @@ public class World {
         //BUG: Multiple Towers can be added to one point
         if (map.getCells().get(base).getEntities().size() > 0)
             return ValidationState.INVALID_BASE;
+        for (Path path :
+                getGate().getPaths()) {
+            if (path.getCells().contains(map.getCells().get(base)))
+                return ValidationState.INVALID_BASE;
+        }
         // set interval from data
         Tower tower = new Tower(this, base, 1000, 7);
         addPhysicalEntity(tower);
