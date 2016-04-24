@@ -20,7 +20,6 @@ import java.util.*;
 public class World {
     // field for scaling the time in game
     private int timerScale;
-
     // It is needed for printing from world, like enemy is destroyed, etc;
     private CommandProcessor cmdp;
 
@@ -275,15 +274,23 @@ public class World {
                 return ValidationState.INVALID_BASE;
         }
         // set interval from data
-        Tower tower = new Tower(this, base, 1000, 7);
-        addPhysicalEntity(tower);
-        
-        // set tower as the physical entity for the cell
-        ArrayList<PhysicalEntity> physicalEntities = new ArrayList<>();
-        physicalEntities.add(tower);
-        map.getCells().get(base).setEntities(physicalEntities);
+        if (this.money >= Tower::getCost ()){
+            this.money -= Tower::getCost ();
+            Tower tower = new Tower(this, base, 1000, 7);
 
-        return ValidationState.VALID;
+            addPhysicalEntity(tower);
+
+            // set tower as the physical entity for the cell
+            ArrayList<PhysicalEntity> physicalEntities = new ArrayList<>();
+            physicalEntities.add(tower);
+            map.getCells().get(base).setEntities(physicalEntities);
+
+            return ValidationState.VALID;
+        }
+        else
+        {
+            return ValidationState.NotEnoughMoney;
+        }
     }
 
     /**
