@@ -132,17 +132,12 @@ public class World {
     private Scanner scanner;
     private int money;
 
-    public World() {
-        scanner = new Scanner(System.in);
-        System.out.println("Enter money:");
-        money = scanner.nextInt();
-        //generateControls();
-    }
 
     public World(String mapFilePath, String configurationFilePath) throws Exception
     {
         generateControls(mapFilePath);
         setConfig(configurationFilePath);
+        money = 10000;
     }
 
     public void callWave() {
@@ -222,7 +217,12 @@ public class World {
      * This function is called when the game is over
      */
     public void onGameOver() {
-        throw new NotImplementedException();
+        timer.cancel();
+        if (getCastle().getLife() <= 0)
+            getCmdp().print("\u001B[31m" + "GAME IS OVER, YOU LOST" + "\u001B[0m");
+        else
+            getCmdp().print("\u001B[34m" + "You WON!" + "\u001B[0m");
+
     }
     private void generateWaves(NodeList wavesNodeList) {
         wavesCounter = -1;
@@ -274,8 +274,8 @@ public class World {
                 return ValidationState.INVALID_BASE;
         }
         // set interval from data
-        if (this.money >= Tower::getCost ()){
-            this.money -= Tower::getCost ();
+        if (this.money >= Tower.getCost()) {
+            this.money -= Tower.getCost();
             Tower tower = new Tower(this, base, 1000, 7);
 
             addPhysicalEntity(tower);
@@ -289,7 +289,7 @@ public class World {
         }
         else
         {
-            return ValidationState.NotEnoughMoney;
+            return ValidationState.NOT_ENOUGH_MONEY;
         }
     }
 

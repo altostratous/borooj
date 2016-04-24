@@ -11,6 +11,11 @@ import java.util.ArrayList;
 public class Tower extends PhysicalEntity {
     private int range;
 
+    public static int getCost() {
+        // TODO: 4/24/2016 Load from external resource 
+        return 11;
+    }
+
     /**
      * finds the distance between a cell and the tower
      *

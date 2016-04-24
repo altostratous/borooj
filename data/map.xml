@@ -14,7 +14,7 @@
     </gate>
     <waves>
         <wave>
-            <units type="Soldier" count="300"/>
+            <units type="Soldier" count="30"/>
         </wave>
     </waves>
 </map>

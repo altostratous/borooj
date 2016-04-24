@@ -65,8 +65,8 @@ public class CommandProcessor {
             out.println(validationState);
         }
         CommandProcessor th = this;
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        //Timer timer = new Timer();
+        world.getTimer().schedule(new TimerTask() {
             @Override
             public void run() {
                 //cmdp.clear();
@@ -267,7 +267,7 @@ public class CommandProcessor {
      * @param input text to print
      */
     public void print(String input) {
-        out.print(input);
+        out.println(input);
     }
 
     public void run(String command) {

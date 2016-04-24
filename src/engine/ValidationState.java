@@ -59,4 +59,10 @@ public class ValidationState {
      * Error of file for example config file
      */
     public static final ValidationState INVALID_FILE = new ValidationState("The file address or the file content has some problem.", 2);
+
+    /**
+     * Error when user's money is not enough
+     */
+    public static final ValidationState NOT_ENOUGH_MONEY = new ValidationState("Your money is not enough.", 3);
+
 }
