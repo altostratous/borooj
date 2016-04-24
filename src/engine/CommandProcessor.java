@@ -60,7 +60,7 @@ public class CommandProcessor {
     private void startGame() {
         ValidationState validationState = world.start();
         if (validationState.equals(ValidationState.VALID)) {
-            out.println("Game started successfully!");
+            out.println("\u001B[34m" + "Game started successfully!" + "\u001B[0m");
         } else {
             out.println(validationState);
         }
@@ -74,14 +74,14 @@ public class CommandProcessor {
                 th.display();
 
             }
-        }, 5, 1000);
+        }, 1000, 1000);
     }
 
     private void tower() {
         Point base = new Point(Integer.parseInt(next()), Integer.parseInt(next()));
         ValidationState validationState = world.addTower(base);
         if (validationState.equals(ValidationState.VALID)) {
-            out.println("Tower added successfully!");
+            out.println("\u001B[34m" + "Tower added successfully!" + "\u001B[0m");
         } else {
             out.println(validationState);
         }
@@ -91,7 +91,7 @@ public class CommandProcessor {
         String configPath = nextLine();
         ValidationState validationState = world.setMap(configPath);
         if (validationState.equals(ValidationState.VALID)) {
-            out.println("Map set successfully!");
+            out.println("Map set successfully!" + "\u001B[0m");
         } else {
             out.println(validationState);
         }
@@ -117,7 +117,7 @@ public class CommandProcessor {
                 String configPath = nextLine();
                 ValidationState validationState = world.setConfig(configPath);
                 if (validationState.equals(ValidationState.VALID)) {
-                    out.println("Config set successfully!");
+                    out.println("Config set successfully!" + "\u001B[0m");
                 } else {
                     out.println(validationState);
                 }
@@ -259,6 +259,15 @@ public class CommandProcessor {
         if (command.equals("start-game")) {
             startGame();
         }
+    }
+
+    /**
+     * For directly printing a text.
+     *
+     * @param input text to print
+     */
+    public void print(String input) {
+        out.print(input);
     }
 
     public void run(String command) {

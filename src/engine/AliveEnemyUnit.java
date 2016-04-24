@@ -88,6 +88,8 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     public void damage(int value) {
         if (value >= health) {
             health = 0;
+            getWorld().getCmdp().print("\u001B[34m" + "AliveEnemyUnit at " + getCell().getPosition().toString() + " is destroyed" + "\u001B[0m");
+            getWorld().getCmdp().printNewLine(1);
             getWorld().getPhysicalEntities().remove(this);
         } else {
             health -= value;

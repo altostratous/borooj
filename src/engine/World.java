@@ -2,20 +2,16 @@ package engine;
 
 import java.awt.*;
 
-import jdk.nashorn.internal.ir.ContinueNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 //import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -24,6 +20,9 @@ import java.util.*;
 public class World {
     // field for scaling the time in game
     private int timerScale;
+
+    // It is needed for printing from world, like enemy is destroyed, etc;
+    private CommandProcessor cmdp;
 
     /**
      * Get Timer
@@ -145,6 +144,24 @@ public class World {
         // TODO: 4/13/2016 Check limit of waves 
         wavesCounter++;
         waves.get(wavesCounter).startWaving();
+    }
+
+    /**
+     * It is used for printing from objects, like soldiers
+     *
+     * @return
+     */
+    public CommandProcessor getCmdp() {
+        return cmdp;
+    }
+
+    /**
+     * It is used once for associating active cmdp with world
+     *
+     * @param cmdp
+     */
+    public void setCmdp(CommandProcessor cmdp) {
+        this.cmdp = cmdp;
     }
 
     /**
@@ -308,7 +325,6 @@ public class World {
      */
     public ValidationState start() {
         callWave();
-        //throw new NotImplementedException();
         for (PhysicalEntity pe :
                 physicalEntities) {
             //timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());

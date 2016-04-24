@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<map width="11" height="11">
+<map width="80" height="20">
     <castle x="5" y="0" width="5" height="1" life="30"></castle>
 
     <!-- Directions are in u, r, d, l format. u for up, r for right etc. -->
@@ -14,7 +14,7 @@
     </gate>
     <waves>
         <wave>
-            <units type="Soldier" count="30"/>
+            <units type="Soldier" count="300"/>
         </wave>
     </waves>
 </map>

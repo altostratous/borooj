@@ -26,6 +26,7 @@ public class Main {
             Timer timer = new Timer();
             World world = new World("data/map.xml", "data/configuration.xml");
             CommandProcessor cmdp = new CommandProcessor(System.out, world, System.in);
+            world.setCmdp(cmdp);
             ArrayList<String> commands = getCommands("data/configuration.xml");
 
             for (String command :
