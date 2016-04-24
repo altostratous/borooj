@@ -3,7 +3,7 @@ package engine;
 import java.util.ArrayList;
 
 /**
- * Created by Hamid on 4/6/2016.
+ * This class models the missile that will be shot from the tower
  */
 public class Missile {
     // the target position
@@ -15,24 +15,42 @@ public class Missile {
      * Constructs the missile
      *
      * @param power  the power of the missile
+     * @param target the target of the missile
      */
     public Missile(int power, Cell target) {
         this.power = power;
         this.target = target;
     }
 
+    /**
+     * Sets the power of missile
+     *
+     * @param power the amount of damage this missile causes
+     */
     public void setPower(int power) {
         this.power = power;
     }
 
+    /**
+     * Sets the target of missile
+     * @param target the target
+     */
     public void setTarget(Cell target) {
         this.target = target;
     }
 
+    /**
+     * Gets the target
+     * @return a Cell
+     */
     public Cell getTarget() {
         return target;
     }
 
+    /**
+     * Gets the power
+     * @return an int
+     */
     public int getPower() {
         return power;
     }

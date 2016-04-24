@@ -6,12 +6,17 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by HP PC on 4/17/2016.
+ * This class models the tower which the player build for attacking enemies
  */
 public class Tower extends PhysicalEntity {
-    // TODO: 4/17/2016 Hamid implement this class please
     private int range;
 
+    /**
+     * finds the distance between a cell and the tower
+     *
+     * @param a the Cell for calculating the distance to tower
+     * @return the distance
+     */
     private int distanceToTower(Cell a) {
         int minDistance = Integer.MAX_VALUE;
         int tmp;
@@ -26,6 +31,14 @@ public class Tower extends PhysicalEntity {
         return minDistance;
     }
 
+    /**
+     * Constructs the tower
+     *
+     * @param world  the environment of the game
+     * @param base  the coordinate of the tower
+     * @param interval the fire rate of the tower
+     * @param range the range of the tower
+     */
     public Tower(World world, Point base, int interval, int range) {
         // init the tower, may be later extended
         super(world, interval);
@@ -36,6 +49,11 @@ public class Tower extends PhysicalEntity {
         getWorld().getTimer().schedule(Tower.super.getTimerTask(), 0, Tower.super.getInterval());
     }
 
+    /**
+     * A private method for found the Cell of the enemy with lowest Health and nearer to castle
+     * @param listOfAlives the list of  Alive enemies
+     * @return a Cell
+     */
     private Cell priorAttackingEnemy(ArrayList<AliveEnemyUnit> listOfAlives) {
         ArrayList<AliveEnemyUnit> listOfPriors = new ArrayList<>();
         int minHealth = Integer.MAX_VALUE;
@@ -64,6 +82,10 @@ public class Tower extends PhysicalEntity {
         return answer;
     }
 
+    /**
+     * Do the job
+     * Checks if we have a soldier in the range of the tower and then shoot a missile to the prior enemy
+     */
     @Override
     public void timerTick() {
         Cell target = this.priorAttackingEnemy(getWorld().getAliveEnemyUnits());
