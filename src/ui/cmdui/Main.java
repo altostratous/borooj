@@ -1,4 +1,4 @@
-package ui;
+package ui.cmdui;
 
 import logic.controllers.World;
 import org.w3c.dom.Document;
@@ -6,6 +6,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import ui.cmdui.CommandProcessor;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,8 +25,8 @@ public class Main {
         try {
             Timer timer = new Timer();
             World world = new World("data/map.xml", "data/configuration.xml");
-            CommandProcessor cmdp = new CommandProcessor(System.out, world, System.in);
-            world.setCmdp(cmdp);
+            CommandProcessor cmdp = new CommandProcessor(System.out, System.in);
+            world.setUserInterface(cmdp);
             ArrayList<String> commands = getCommands("data/configuration.xml");
 
             for (String command :

@@ -4,13 +4,13 @@ import java.awt.*;
 
 import logic.models.Map;
 import logic.physics.*;
+import logic.ui.BoroojUserInterface;
 import logic.ui.ValidationState;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import ui.CommandProcessor;
 
 //import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
@@ -25,7 +25,7 @@ public class World {
     // field for scaling the time in game
     private int timerScale;
     // It is needed for printing from world, like enemy is destroyed, etc;
-    private CommandProcessor cmdp;
+    private BoroojUserInterface userInterface;
 
     /**
      * Get Timer
@@ -157,17 +157,18 @@ public class World {
      *
      * @return
      */
-    public CommandProcessor getCmdp() {
-        return cmdp;
+    public BoroojUserInterface getUserInterface() {
+        return userInterface;
     }
 
     /**
      * It is used once for associating active cmdp with world
      *
-     * @param cmdp
+     * @param userInterface
      */
-    public void setCmdp(CommandProcessor cmdp) {
-        this.cmdp = cmdp;
+    public void setUserInterface(BoroojUserInterface userInterface) {
+        this.userInterface = userInterface;
+        userInterface.setWorld(this);
     }
 
     /**
@@ -224,11 +225,14 @@ public class World {
      * This function is called when the game is over
      */
     public void onGameOver() {
+        getUserInterface().onGameOver();
         timer.cancel();
         if (getCastle().getLife() <= 0)
-            getCmdp().print("\u001B[31m" + "GAME IS OVER, YOU LOST" + "\u001B[0m");
+            getUserInterface().onLose();
+//            getUserInterface().print("\u001B[31m" + "GAME IS OVER, YOU LOST" + "\u001B[0m");
         else
-            getCmdp().print("\u001B[34m" + "You WON!" + "\u001B[0m");
+            getUserInterface().onWin();
+//            getUserInterface().print("\u001B[34m" + "You WON!" + "\u001B[0m");
 
     }
     private void generateWaves(NodeList wavesNodeList) {

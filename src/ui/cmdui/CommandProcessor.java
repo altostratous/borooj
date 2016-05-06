@@ -1,4 +1,4 @@
-package ui;
+package ui.cmdui;
 
 //COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -9,6 +9,7 @@ import logic.physics.AliveEnemyUnit;
 import logic.physics.Path;
 import logic.physics.PhysicalEntity;
 import logic.physics.Tower;
+import logic.ui.BoroojUserInterface;
 import logic.ui.ValidationState;
 
 import java.awt.*;
@@ -17,7 +18,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.TimerTask;
 
-public class CommandProcessor {
+public class CommandProcessor implements BoroojUserInterface {
     // TODO: 4/6/2016 Ali implement this class
     private PrintStream out;
     private World world;
@@ -49,9 +50,8 @@ public class CommandProcessor {
         }
     }
 
-    public CommandProcessor(PrintStream out, World world, InputStream inputStream) {
+    public CommandProcessor(PrintStream out, InputStream inputStream) {
         this.out = out;
-        this.world = world;
         this.scanner = new Scanner(inputStream);
     }
 
@@ -229,6 +229,26 @@ public class CommandProcessor {
             out.println("");
         }
 
+    }
+
+    @Override
+    public void setWorld(World world) {
+        this.world = world;
+    }
+
+    @Override
+    public void onGameOver() {
+        out.println("The game is over.");
+    }
+
+    @Override
+    public void onLose() {
+        out.print("\u001B[31m" + "GAME IS OVER, YOU LOST" + "\u001B[0m");
+    }
+
+    @Override
+    public void onWin() {
+        out.print("\u001B[34m" + "You WON!" + "\u001B[0m");
     }
 
     private void newGame() {
