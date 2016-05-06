@@ -1,4 +1,4 @@
-package engine;
+package logic;
 
 /**
  * Created by HP PC on 4/9/2016.

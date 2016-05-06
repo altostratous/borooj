@@ -1,4 +1,4 @@
-package engine;
+package logic;
 
 /**
  * Each soldier has a path that is asignned by gate that make it start moving

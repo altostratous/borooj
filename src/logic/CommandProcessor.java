@@ -1,4 +1,4 @@
-package engine;
+package logic;
 
 //COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -6,7 +6,6 @@ import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.Timer;
 import java.util.TimerTask;
 
 public class CommandProcessor {

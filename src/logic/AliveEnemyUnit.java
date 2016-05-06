@@ -1,10 +1,8 @@
-package engine;
+package logic;
 
 import sun.plugin.dom.exception.InvalidStateException;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /***
  * This class models alive enemy units

@@ -1,4 +1,4 @@
-package engine;
+package logic;
 
 import org.w3c.dom.Element;
 import java.awt.*;

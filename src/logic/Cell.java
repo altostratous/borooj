@@ -1,4 +1,4 @@
-package engine;
+package logic;
 
 import java.awt.*;
 import java.util.ArrayList;
