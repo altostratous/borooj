@@ -1,12 +1,14 @@
-package logic;
+package logic.physics;
 
+import logic.controllers.World;
+import logic.models.Cell;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Gate extends PhysicalEntity{
+public class Gate extends PhysicalEntity {
     // paths to insert enemies in
     private ArrayList<Path> paths;
 

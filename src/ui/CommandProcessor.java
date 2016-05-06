@@ -1,6 +1,15 @@
-package logic;
+package ui;
 
 //COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+
+import logic.controllers.World;
+import logic.models.Cell;
+import logic.models.Map;
+import logic.physics.AliveEnemyUnit;
+import logic.physics.Path;
+import logic.physics.PhysicalEntity;
+import logic.physics.Tower;
+import logic.ui.ValidationState;
 
 import java.awt.*;
 import java.io.InputStream;

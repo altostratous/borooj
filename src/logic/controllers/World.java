@@ -1,12 +1,16 @@
-package logic;
+package logic.controllers;
 
 import java.awt.*;
 
+import logic.models.Map;
+import logic.physics.*;
+import logic.ui.ValidationState;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import ui.CommandProcessor;
 
 //import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
@@ -83,7 +87,7 @@ public class World {
     // the gate
     private Gate gate;
     // the map
-    private Map map;
+    private logic.models.Map map;
     // the timer
     private Timer timer;
     private ArrayList<PhysicalEntity> physicalEntities;

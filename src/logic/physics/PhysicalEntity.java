@@ -1,4 +1,8 @@
-package logic;
+package logic.physics;
+
+import logic.models.Cell;
+import logic.models.Map;
+import logic.controllers.World;
 
 import java.awt.*;
 import java.util.ArrayList;

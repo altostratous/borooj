@@ -1,5 +1,6 @@
-import logic.CommandProcessor;
-import logic.World;
+package ui;
+
+import logic.controllers.World;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

@@ -1,5 +1,7 @@
-package logic;
+package logic.physics;
 
+import logic.controllers.World;
+import logic.models.Cell;
 import org.w3c.dom.Node;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

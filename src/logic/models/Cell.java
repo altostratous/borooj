@@ -1,4 +1,6 @@
-package logic;
+package logic.models;
+
+import logic.physics.PhysicalEntity;
 
 import java.awt.*;
 import java.util.ArrayList;

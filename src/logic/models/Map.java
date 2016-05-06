@@ -1,5 +1,6 @@
-package logic;
+package logic.models;
 
+import logic.controllers.World;
 import org.w3c.dom.Element;
 import java.awt.*;
 import java.util.HashMap;

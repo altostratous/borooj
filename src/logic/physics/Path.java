@@ -1,4 +1,8 @@
-package logic;
+package logic.physics;
+
+import logic.controllers.World;
+import logic.models.Cell;
+import logic.physics.PhysicalEntity;
 
 import java.util.ArrayList;
 
@@ -6,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Path is used for determining which cells should be passes by soldiers
  */
-public class Path extends PhysicalEntity{
+public class Path extends PhysicalEntity {
     // local vars
     private static int idCounter = 1;
     private int myId;

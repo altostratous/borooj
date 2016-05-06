@@ -1,4 +1,8 @@
-package logic;
+package logic.controllers;
+
+import logic.physics.AliveEnemyUnit;
+import logic.models.Cell;
+import logic.physics.PhysicalEntity;
 
 import java.util.ArrayList;
 

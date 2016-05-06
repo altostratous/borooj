@@ -1,5 +1,7 @@
-package logic;
+package logic.physics;
 
+import logic.controllers.World;
+import logic.models.Cell;
 import sun.plugin.dom.exception.InvalidStateException;
 
 import java.util.ArrayList;

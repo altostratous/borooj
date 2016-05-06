@@ -1,4 +1,6 @@
-package logic;
+package logic.physics;
+
+import logic.controllers.World;
 
 /**
  * Each soldier has a path that is asignned by gate that make it start moving

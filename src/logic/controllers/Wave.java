@@ -1,5 +1,8 @@
-package logic;
+package logic.controllers;
 
+import logic.physics.AliveEnemyUnit;
+import logic.physics.Gate;
+import logic.physics.Soldier;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
