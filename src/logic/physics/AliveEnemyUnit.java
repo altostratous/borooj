@@ -88,10 +88,12 @@ public abstract class AliveEnemyUnit extends PhysicalEntity {
     public void damage(int value) {
         if (value >= health) {
             health = 0;
-//            getWorld().getUserInterface().print("\u001B[34m" + "AliveEnemyUnit at " + getCell().getPosition().toString() + " is destroyed" + "\u001B[0m");
-//            getWorld().getUserInterface().printNewLine(1);
+            getWorld().getUserInterface().print("\u001B[34m" + "AliveEnemyUnit at " + getCell().getPosition().toString() + " is destroyed" + "\u001B[0m\n");
+            //getWorld().getUserInterface().printNewLine(1);
             getWorld().getPhysicalEntities().remove(this);
+            getCell().getEntities().remove(this);
             getWorld().setMoney(getWorld().getMoney() + this.getCost());
+
         } else {
             health -= value;
         }

@@ -32,4 +32,11 @@ public interface BoroojUserInterface {
      * it is called on win
      */
     void onWin();
+
+    /**
+     * it is called for printing information
+     *
+     * @param s
+     */
+    void print(String s);
 }

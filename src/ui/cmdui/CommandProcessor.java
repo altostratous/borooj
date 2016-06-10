@@ -1,5 +1,4 @@
 package ui.cmdui;
-
 //COLOR CODE FROM: http://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
 import logic.controllers.World;
@@ -9,8 +8,10 @@ import logic.physics.AliveEnemyUnit;
 import logic.physics.Path;
 import logic.physics.PhysicalEntity;
 import logic.physics.Tower;
+import logic.physics.towers.Fire;
 import logic.ui.BoroojUserInterface;
 import logic.ui.ValidationState;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.io.InputStream;
@@ -87,9 +88,19 @@ public class CommandProcessor implements BoroojUserInterface {
 
     private void tower() {
         Point base = new Point(Integer.parseInt(next()), Integer.parseInt(next()));
-        ValidationState validationState = world.addTower(base);
+        ValidationState validationState = world.addTower(base, Tower.towerTypes.None);
         if (validationState.equals(ValidationState.VALID)) {
             out.println("\u001B[34m" + "Tower added successfully!" + "\u001B[0m");
+        } else {
+            out.println(validationState);
+        }
+    }
+
+    private void fireTower() {
+        Point base = new Point(Integer.parseInt(next()), Integer.parseInt(next()));
+        ValidationState validationState = world.addTower(base, Tower.towerTypes.Fire);
+        if (validationState.equals(ValidationState.VALID)) {
+            out.println("\u001B[34m" + "Fire Tower added successfully!" + "\u001B[0m");
         } else {
             out.println(validationState);
         }
@@ -202,7 +213,7 @@ public class CommandProcessor implements BoroojUserInterface {
                 int x = (int) ((Tower) pe).getCells().get(0).getPosition().getX();
                 int y = (int) ((Tower) pe).getCells().get(0).getPosition().getY();
 
-                table[y][x] = "T";
+                table[y][x] = TowerToStr((Tower) pe);
             }
         }
 
@@ -285,6 +296,9 @@ public class CommandProcessor implements BoroojUserInterface {
         if (command.equals("tower")) {
             tower();
         }
+        if (command.equals("fireTower")) {
+            fireTower();
+        }
         if (command.equals("start-game")) {
             startGame();
         }
@@ -302,5 +316,17 @@ public class CommandProcessor implements BoroojUserInterface {
     public void run(String command) {
         buffer = command;
         innerRun(next());
+    }
+
+    /**
+     * Maps a String to each tower for putting in display table
+     */
+    private static String TowerToStr(Tower t) {
+        //if (t instanceof Combined)
+        if (t instanceof logic.physics.towers.Fire)
+            return "F";
+            //else if (t instanceof logic.physics.towers.Light)
+        else
+            return "T";
     }
 }

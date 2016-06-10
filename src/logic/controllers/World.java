@@ -27,6 +27,10 @@ public class World {
     // It is needed for printing from world, like enemy is destroyed, etc;
     private BoroojUserInterface userInterface;
 
+    public int getTimerScale() {
+        return timerScale;
+    }
+
     /**
      * Get Timer
      *
@@ -58,8 +62,10 @@ public class World {
         }
         return listOfAlives;
     }
+
     /**
      * Sets the castle in the world
+     *
      * @param castle the castle
      */
     public void setCastle(Castle castle) {
@@ -68,6 +74,7 @@ public class World {
 
     /**
      * Gets the gate in the world
+     *
      * @return returns a gate
      */
     public Gate getGate() {
@@ -76,6 +83,7 @@ public class World {
 
     /**
      * Sets the gate of the world
+     *
      * @param gate the gate to be set
      */
     public void setGate(Gate gate) {
@@ -97,8 +105,10 @@ public class World {
     public ArrayList<PhysicalEntity> getPhysicalEntities() {
         return physicalEntities;
     }
+
     /**
      * Registers a physical entity in the world so that the entity starts acting
+     *
      * @param pe the physical entity to add
      */
     public void addPhysicalEntity(PhysicalEntity pe) {
@@ -110,6 +120,7 @@ public class World {
 
     /**
      * Removes an entity from the world
+     *
      * @param pe the physical entity to remove
      */
     public void removePhysicalEntity(PhysicalEntity pe) {
@@ -118,7 +129,6 @@ public class World {
 
     /**
      * Gets the map of the world
-     *
      */
     public Map getMap() {
         return map;
@@ -126,6 +136,7 @@ public class World {
 
     /**
      * Sets the map of the world
+     *
      * @param map the map object to be set
      */
     public void setMap(Map map) {
@@ -137,8 +148,7 @@ public class World {
     private int money;
 
 
-    public World(String mapFilePath, String configurationFilePath) throws Exception
-    {
+    public World(String mapFilePath, String configurationFilePath) throws Exception {
         generateControls(mapFilePath);
         setConfig(configurationFilePath);
         // TODO: 4/24/2016 load money from external resource 
@@ -173,6 +183,7 @@ public class World {
 
     /**
      * internally reads the map file
+     *
      * @param mapFilePath address to the map file
      * @throws Exception
      */
@@ -235,6 +246,7 @@ public class World {
 //            getUserInterface().print("\u001B[34m" + "You WON!" + "\u001B[0m");
 
     }
+
     private void generateWaves(NodeList wavesNodeList) {
         wavesCounter = -1;
         waves = new ArrayList<>();
@@ -244,7 +256,7 @@ public class World {
         }
     }
 
-//    private void genCastle() {
+    //    private void genCastle() {
 //        System.out.println("Enter Castle Rectangle (4 numbers with space between for 2 points of rectangle):");
 //        scanner.nextLine();
 //        // Rectangle rec = new Rectangle(scanner.nextLine(), this);
@@ -272,10 +284,11 @@ public class World {
 
     /**
      * tries to add tower
+     *
      * @param base the base to add tower on
      * @return ValidationState representing the validation of the order
      */
-    public ValidationState addTower(Point base) {
+    public ValidationState addTower(Point base, Tower.towerTypes _type) {
         //BUG: Multiple Towers can be added to one point
         if (map.getCells().get(base).getEntities().size() > 0)
             return ValidationState.INVALID_BASE;
@@ -285,9 +298,9 @@ public class World {
                 return ValidationState.INVALID_BASE;
         }
         // set interval from data
-        if (this.money >= Tower.getCost()) {
-            this.money -= Tower.getCost();
-            Tower tower = new Tower(this, base, 300, 7);
+        if (this.money >= _type.getCost()) {
+            this.money -= _type.getCost();
+            Tower tower = _type.generateObj(this, base);
 
             addPhysicalEntity(tower);
 
@@ -297,15 +310,14 @@ public class World {
             map.getCells().get(base).setEntities(physicalEntities);
 
             return ValidationState.VALID;
-        }
-        else
-        {
+        } else {
             return ValidationState.NOT_ENOUGH_MONEY;
         }
     }
 
     /**
      * Set config from file
+     *
      * @param configPath address to the config file
      * @return ValidationState representing the validation of the order
      */
@@ -332,6 +344,7 @@ public class World {
 
     /**
      * Sets the map firm map file
+     *
      * @param configPath address to the map xml file
      * @return ValidationState representing the validation of the order
      */
@@ -350,6 +363,7 @@ public class World {
 
     /***
      * Starts the game
+     *
      * @return ValidationState representing the validation of the order
      */
     public ValidationState start() {
@@ -359,7 +373,7 @@ public class World {
             //timer.schedule(pe.getTimerTask(), 0, this.timerScale * pe.getInterval());
         }
         //gate.start();
-        timer.schedule(gate.getTimerTask(), 0, timerScale * gate.getInterval());
+        timer.schedule(gate.getTimerTask(), 0, this.timerScale * gate.getInterval());
         return ValidationState.VALID;
     }
 
